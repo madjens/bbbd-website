@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIDS Dataset Repository</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+</head>
+<body>
+    <header style="
+    color: #f8f0f0;
+    background-color: black;
+    border-color: rgb(136, 136, 136);
+    border-bottom: 1px;
+    padding-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 80px;">
+        <h1>The Brain, Body, and Behaviour Dataset - Neural Engineering Lab, CCNY</h1>
+    </header>
+
+    <header style="color: #f8f0f0; background-color: #1e2760; border-color: rgb(136, 136, 136); border-top: 2px solid rgb(136, 136, 136); border-bottom: 2px solid rgb(136, 136, 136); padding-top: 2px; width: 100vw;">
+        <nav>
+            <ul style="list-style: none; display: flex; padding: 0; margin: 0;">
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('experiments_page') }}" class="nav-link">Experiments</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('questionnaires_page') }}" class="nav-link">Questionnaires</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('tutorials_page') }}" class="nav-link">Tutorials</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('research_page') }}" class="nav-link">Research</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('about_page') }}" class="nav-link">About</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('download_page') }}" class="nav-link">Download</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="flex-container">
+            <div>
+                <section id="container-heading" >
+                    <h2>Brief Overview</h2>
+                </section>
+
+                <section id="plot-display">
+                    <div id="container-content">
+                        <h2><u>Summary</u></h2>
+                        <div >
+                            In each of the 5 experiments:
+                            <ul>
+                                <li>Subjects watch different video stimuli in <u>attention</u> and <u>distracted</u> (or <u>intervention</u>) conditions
+                                <li>They answer questions about the videos to assess memory and engagement.
+                                <li>Multimodal physiological data is collected throughout.
+                                <li>Both raw and preprocessed data alignes across all modalities are available.</li>
+                            </ul>
+                        </div>
+                        <div class="image-container">
+                            <img src="static/images/watchandanswer.jpg" style="width: 480px; height: 200px;">
+                        </div>
+
+                        <h2><u>Dataset at a Glance</u></h2>
+                        <ul>
+                            <li><strong>Number of Experiments:</strong> 5</li>
+                            <li><strong>Total Subjects:</strong> 178</li>
+
+                            <br>
+                            <li><strong>Total Raw Modalities:</strong> 7</li>
+                            <ul>
+                                <li>EEG | ECG | EOG | Respiration | Eyetracking (Pupil Size, Gaze and Head Coordinates)</li>
+                            </ul>
+                            <br>
+                            <li><strong>Total Hours of Raw Data:</strong></li>
+                            <table>
+                                <br>
+                                <tr>
+                                    <th></th>
+                                    <th>EEG</th>
+                                    <th>ECG</th>
+                                    <th>EOG</th>
+                                    <th>Head</th>
+                                    <th>Gaze</th>
+                                    <th>Pupil</th>
+                                    <th>Respiration</th>
+                                </tr>
+                                <tr>
+                                    <th>Quantity</th>
+                                    <td>91.2 hours</td>
+                                    <td>93.5 hours</td>
+                                    <td>94.4 hours</td>
+                                    <td>92.5 hours</td>
+                                    <td>110.6 hours</td>
+                                    <td>110.6 hours</td>
+                                    <td>44.2 hours</td>
+                                </tr>
+                            </table>
+                            <br>
+                            <li><strong>Total Derived Modalities:</strong> 12</li>
+                            <ul>
+                                <li><u>Continuous</u> - Heart Rate | Breath Rate | Saccade Rate | Blink Rate | Gaze-Fixation Rate </li>
+                                <li><u>Discrete</u> - Heart Beats | Breath Peaks | Saccades | Blinks | Gaze-Fixations</li>
+                                <li><u>Preprocessed</u> - Filtered ECG | Filtered EEG</li>
+                            </ul>
+                            <br>
+                            <li><strong>Phenotypes Available:</strong> 4</li>
+                            <ul>
+                                <li>Participant Info (Sex | Age | Occupation | Tired | Study Time | GPA | Last Caffeine Intake | Occupation Field) </li>
+                                <li>ASRS (Adult ADHD Self Report) Responses | Digit Span Responses | Stimuli Questionnaire Responses</li>
+                            </ul>
+                        </ul>
+
+                    </div>
+                </section>
+            </div>
+
+            <div>
+                <div id="hometable-container"></div>
+            </div>
+
+
+        </div>
+
+        <section id="content-heading">
+            <h2 id="dataset-message">Data Visualisation | Viewing Experiment 5 Data</h2>
+            <p>
+                <section>
+                    <div id="options-buttons">
+                        <div id="subjects"></div>
+                        <div id="sessions"></div>
+                        <div id="stimuli"></div>
+                        <!-- Buttons will be populated dynamically -->
+                        <div id="loading" style="display: none; text-align: center; color: white;">
+                            <p>Loading...</p>
+                        </div>
+                    </div>
+                </section>
+            </p>
+        </section>
+
+        <div class="flex-container">
+
+            <div>
+                <section id="plot-display">
+                    <p><strong>Raw Signals</strong></p>
+                    <div id="plotraw"></div>
+                </section>
+
+            </div>
+
+            <div>
+
+                <section id="plot-display">
+                    <p><strong>Derived Signals</strong></p>
+                    <div id="plotderived"></div>
+                </section>
+
+            </div>
+
+        </div>
+
+        <section id="superexp-heading">
+            <h2>Potential Dataset Use Cases</h2>
+        </section>
+
+        <section id="exp-content">
+            <p>
+                We encourage researchers to explore and utilize this dataset for advancing knowledge in cognitive and physiological sciences. This multimodal physiological signal dataset offers insights in various research areas, such as:
+            </p>
+            <ul>
+            <li><strong>Brain-Body Interaction:</strong> Exploring the interactions between neural activity and physiological dynamics, including which fluctuations precede one another.</li>
+            <li><strong>Multimodal Predictive Modeling:</strong> Leveraging synchronized data to predict physiological responses, such as estimating heart rate from gaze patterns or deriving breath rate from EEG signals, enabling cross-modal insights and applications.</li>
+            <li><strong>Engagement Response Analysis:</strong> Measuring how interactive or engaging educational videos are.</li>
+            <li><strong>Memory Retention Studies:</strong> Investigating how well information is retained after viewing.</li>
+            <li><strong>Cognitive Load Assessment:</strong> Understanding how different stimuli affect mental effort.</li>
+        </ul>
+        </section>
+
+        <section id="superexp-heading">
+            <h2>Usage Notes</h2>
+        </section>
+        <section id="exp-content">
+        <ol>
+            <li>
+                <strong>Acknowledgment:</strong>
+                <p>Cite this dataset in your research and acknowledge its contribution to your studies.</p>
+            </li>
+            <br>
+            <li>
+                <strong>File Formats and Tools:</strong>
+                <p>
+                    EEG data files are stored in <code>.bdf</code> format and can be accessed using <code>pyEDFlib</code> or <code>mne-bids</code> libraries on Python, or <code>EEGLAB</code> on MATLAB.
+                    <br>Physiological and behavioral signals are stored as compressed <code>.tsv</code> (tab-separated value) files, and can be accessed using the <code>pandas</code> library on Python.
+                    <br>All metadata files are stored in <code>.json</code>, and the scores for digit-span, ASRS, and stimuli quizzes are stored as <code>.tsv</code> files in the <code>/phenotype</code> directory of each experiment.
+                </p>
+            </li>
+        </ol>
+        <br>
+    </section>
+
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Neural Engineering Lab Dataset Repository. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

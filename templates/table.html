@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Table</title>
+    <script src="{{ url_for('static', filename='download_script.js') }}" defer></script> <!-- Link to script.js -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="flex-container">
+    <div>
+        <section class="tablespace">
+            <div>
+                <h2><u>Raw Data Matrix</u></h2>
+                <table id="modalityTable" style="margin-left: 0px;">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th><u>Experiment 1</u><br>(n=27)</th>
+                            <th><u>Experiment 2</u><br>(n=32)</th>
+                            <th><u>Experiment 3</u><br>(n=29)</th>
+                            <th><u>Experiment 4</u><br>(n=43)</th>
+                            <th><u>Experiment 5</u><br>(n=49)</th>
+                        </tr>
+                        <tr>
+                            <th>Conditions</th>
+                            <th>Attentive<br>Distracted</th>
+                            <th>Attentive<br>Distracted</th>
+                            <th>Attentive<br>Distracted</th>
+                            <th>Attentive<br>Attentive</th>
+                            <th>Attentive<br>Intervention</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for condition, icon, file_prefix, exclude_experiments in [
+                            ('All Modalities', 'backup_table', 'all', []),
+                            ('Pupil size', 'visibility', 'pupil', []),
+                            ('Gaze position', 'eye_tracking', 'gaze_visualangle', []),
+                            ('Saccades', 'visibility_lock', 'saccades', []),
+                            ('Blinks', 'visibility_off', 'blinks', []),
+                            ('Fixations', 'preview', 'fixations', []),
+                            ('Respiration', 'respiratory_rate', 'respiration', [1,2,3]),
+                            ('EOG', 'ophthalmology', 'eog', [1]),
+                            ('ECG', 'monitor_heart', 'ecg', [1]),
+                            ('EEG', 'neurology', 'eeg', [1]),
+                            ('Head Movement', 'face_shake', 'head', []),
+                            ('Questionnaires', 'poll', 'questionnaires', [])
+                        ] %}
+                        <tr data-id="{{ loop.index }}">
+                            <td class="table-clickable">
+                                <b><span class="material-symbols-outlined md-36">{{ icon }}</span><br>{{ condition }}</b>
+                            </td>
+                            {% for experiment_num in range(1, 6) %}
+                            <td>
+                                {% if experiment_num in exclude_experiments %}
+                                <span class="cross" style="color: red;">❌</span>
+                                {% else %}
+                                <button class="button download-btn" data-filename="raw/experiment{{ experiment_num }}/raw_experiment{{ experiment_num }}_{{ file_prefix }}.mat" aria-label="Download raw {{ condition }} data for Experiment {{ experiment_num }}">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                                {% endif %}
+                            </td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <div>
+        <section class="tablespace">
+            <div>
+                <h2><u>Pre-Processed/Derived Data Matrix</u></h2>
+                <table id="modalityTableProcessed" style="margin-left: 0px;">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th><u>Experiment 1</u><br>(n=27)</th>
+                            <th><u>Experiment 2</u><br>(n=32)</th>
+                            <th><u>Experiment 3</u><br>(n=29)</th>
+                            <th><u>Experiment 4</u><br>(n=43)</th>
+                            <th><u>Experiment 5</u><br>(n=49)</th>
+                        </tr>
+                        <tr>
+                            <th>Conditions</th>
+                            <th>Attentive<br>Distracted</th>
+                            <th>Attentive<br>Distracted</th>
+                            <th>Attentive<br>Distracted</th>
+                            <th>Attentive<br>Attentive</th>
+                            <th>Attentive<br>Intervention</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for condition, icon, file_prefix, exclude_experiments in [
+                            ('All Modalities', 'backup_table', 'all', []),
+                            ('Pupil size', 'visibility', 'pupil', []),
+                            ('Gaze position', 'eye_tracking', 'gaze_visualangle', []),
+                            ('Saccades', 'visibility_lock', 'saccades', []),
+                            ('Saccade Rate', 'visibility_lock', 'saccaderate', []),
+                            ('Blinks', 'visibility_off', 'blinks', []),
+                            ('Blink Rate', 'visibility_off', 'blinkrate', []),
+                            ('Fixations', 'preview', 'fixations', []),
+                            ('Fixation Rate', 'preview', 'fixationrate', []),
+                            ('Respiration', 'respiratory_rate', 'respiration', [1,2,3]),
+                            ('Breath Rate', 'respiratory_rate', 'breathrate', [1,2,3]),
+                            ('EOG', 'ophthalmology', 'eog', [1]),
+                            ('ECG', 'monitor_heart', 'ecg', [1]),
+                            ('Heart Rate', 'monitor_heart', 'heartrate', [1]),
+                            ('EEG', 'neurology', 'eeg', [1]),
+                            ('Head Movement', 'face_shake', 'head', []),
+                            ('Questionnaires', 'poll', 'questionnaires', [])
+                        ] %}
+                        <tr data-id="{{ loop.index }}">
+                            <td class="table-clickable">
+                                <b><span class="material-symbols-outlined md-36">{{ icon }}</span><br>{{ condition }}</b>
+                            </td>
+                            {% for experiment_num in range(1, 6) %}
+                            <td>
+                                {% if experiment_num in exclude_experiments %}
+                                <span class="cross" style="color: red;">❌</span>
+                                {% else %}
+                                <button class="button download-btn" data-filename="processed/experiment{{ experiment_num }}/processed_experiment{{ experiment_num }}_{{ file_prefix }}.mat" aria-label="Download processed {{ condition }} data for Experiment {{ experiment_num }}">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                                {% endif %}
+                            </td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>
+
+<div id="tooltip_download" style="position: absolute; display: none; background: #000; color: #fff; padding: 5px; border-radius: 5px; font-size: 12px; pointer-events: none; z-index: 1000;"></div>
+</body>
+
+</html>

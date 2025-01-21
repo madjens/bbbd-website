@@ -1,0 +1,13 @@
+type	question	option1	option2	option3	option4
+memory	What do you need to calculate the mass of our planet?	Distance between moon and planet	Period of motion of moon around the planet	Gravitational constant	Angle of moon towards the planet
+memory	What does a larger distance between a planet and moon imply about the planet's mass (all other things being the same)?	The mass must be bigger	The mass must be the same	The mass must be smaller	It is not possible to have a larger distance with all other things being the same.
+memory	What does a larger gravitation imply about the planet's mass (all other things being the same)?	The mass must be smaller	The mass must be the same	The mass must be bigger	It is not possible to have a larger moon orbit period with all other things being the same.
+memory	Which method is the most suitable to calculate the distance between the sun and our planet?	r=3sqrt(M G/(R2pi)^2)	D=(d/2)/sin(alpha/2)	Parallax	Cluster
+memory	Which method is the most suitable to calculate the distance between a satellite and earth?	D=(d/2)/sin(alpha/2)	r=3sqrt(M G/(R2pi)^2)	Parallax	Period luminosity
+memory	Which method is the most suitable to calculate how far away a burning army tank is from the background mountain range?	Parallax	D=(d/2)/sin(alpha/2)	r=3sqrt(M G/(R2pi)^2)	Cluster
+memory	What do you need to calculate the distance between an object in the sky and earth?	Diameter of the object	In which angle the object is positioned towards the earth	Gravitation of planet earth	Radius of planet earth
+memory	As the size of an object increases, the angular measurement needed to determine its distance...	Increases	Decreases	Stays the same	It's not possible to determine distance this way
+memory	As the size of a star increases, the angular measurement needed in the stellar parallax technique...	Does not matter	Increases	Decreases	 Stays the same
+memory	Which method is more suitable to calculate the distance between our planet and a star not far away?	Stellar parallax	r=3sqrt(M G/(R2pi)^2)	D=(d/2)/sin(alpha/2)	Parallax
+memory	How is it possible to calculate the distance between our planet and stars using the stellar parallax method?	Through simple geometry	Through looking at the star from multiple locations	Through consideration of background stars	Through the luminosity of the star
+memory	Which method is more suitable to calculate the distance between our planet and stars that are light years away?	Cluster	Period Luminosity	Stellar parallax	D=(d/2)/sin(alpha/2)

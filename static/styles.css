@@ -1,0 +1,729 @@
+/* General Styles */
+body {
+    /* background-color: #181a1b; */
+    background-color: black;color: #eee4e4ec;
+    font-family: Arial, sans-serif;
+    margin: 0;
+
+    align-items: center;
+    padding: 0;
+
+    transform: scale(1); /* Scales the page to 120% */
+}
+
+#container-content {
+    background-color: rgb(19, 21, 22);
+    width: 90%;
+    max-width: 100%;
+    margin-right: 0.5vw;
+    max-height: 1000px; /* Adjust the height as needed */
+}
+/* Container for content sections */
+.container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10vw;
+    margin-top: 20px;
+    width: 95%;
+}
+#container-heading {
+    background-color: #3f51b5;
+    /* #3f51b5; */
+    color: #eee4e4ec;
+    padding-top: 15px;
+    display: flex;           /* Use flexbox */
+    align-items: center;     /* Center content vertically */
+    justify-content: left;
+    padding: 20px;
+    height: 25px;
+    margin-top:20px ;
+    margin-left: 20px;
+    border-radius: 8px;
+    width: 45vw;
+    margin-bottom: 20px;
+}
+
+.flex-container {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: row; /* Arrange items horizontally */
+    align-items: flex-start; /* Align items to the top */
+    gap: 0.001vw; /* Slightly larger gap for better spacing */
+    width: 95vw; /* Ensure full width without horizontal scroll */
+}
+#plot-display {
+    background-color: rgb(19, 21, 22);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 1em;
+    /* margin-right: 2em; */
+    width: 45vw;
+    max-height: 1250px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+#plotraw, #plotderived {
+    flex: 1; /* Allow plots to grow evenly */
+    width: 90%; /* Ensure two plots fit side by side */
+    max-height: 85%; /* Adjust the height as needed */
+    padding: 10px; /* Add padding inside the sections */
+    text-align: center;
+}
+
+#options-buttons {
+    display: flex;
+    align-items: center; /* Vertically aligns buttons and separators */
+}
+
+#options-buttons > div {
+    margin-top: 20px;
+    margin-right: 10px; /* Space between the categories and the separator */
+    margin-bottom: 5px;
+}
+
+#options-buttons span {
+    margin: 0 10px; /* Space around the pipe separator */
+}
+
+strong {
+    margin-right: 5px; /* Space between the label and the buttons */
+}
+.info {
+    width: 45vw;
+    max-height:fit-content;
+    max-width: 45vw;
+    padding: 20px;
+    margin-right: 2.5vw;
+    background-color: rgb(19, 21, 22);
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+}
+.selected {
+    background-color: #303f9f;
+    color: white;
+    font-weight: bold;
+}
+#subjects, #sessions, #stimuli {
+    margin-bottom: 15px; /* Spacing between categories */
+}
+
+.right-side {
+    width: 800px; /* Set width for the right side content */
+    background-color: rgb(19, 21, 22); /* Optional background color */
+    justify-content: space-between;
+    padding: 20px; /* Padding for content */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+}
+.highlight {
+    background-color: #353f7c;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    color: white;
+}
+.tablespace {
+    background-color: rgb(22, 24, 24);
+    border-radius: 8px;
+    padding: 2vw;
+    margin-right: 1vw;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: block;
+    width: 44vw;
+    /*margin-left: 1vw;*/
+}
+
+.csv-container {
+    width: 60%;
+    max-height: 12vw;
+    overflow-y: scroll;
+    margin-bottom: 10px;
+}
+
+
+table {
+    /* border-color:#000; */
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    background-color: #181a1b;
+    color: #d4d1d1ec
+}
+th, td {
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+    border: 1px solid #b3aeae;
+}
+th {
+    /* background-color: #292c2e75; */
+    color: #d4d1d1ec;
+    font-size: 16px;
+}
+.button {
+    padding: 8px 8px;
+    margin-left: 10px; /* Space between tick and button */
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 18px; /* Larger font size */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.button:hover {
+    background-color: #e8e6e3;
+}
+.cross {
+    margin-left: 24px;
+    font-size: 24px; /* Size of the tick */
+    vertical-align: middle; /* Center align with the button */
+    text-align: center;
+}
+.tick {
+    margin-left: 24px;
+    font-size: 24px; /* Size of the tick */
+    vertical-align: middle; /* Center align with the button */
+    text-align: center;
+}
+.icon {
+    font-size: 20px; /* Make the download icons consistent */
+}
+.material-symbols-outlined.md-36 {
+     font-size: 30px;
+    }
+.clickable {
+    cursor: pointer;
+    /* background-color: #292c2e75; */
+}
+
+.table-clickable {
+    cursor: pointer;
+    background-color: #292c2e75;
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.table-clickable:hover {
+    background-color: #40474d; /* New color on hover */
+}
+
+/* Flexbox container to center content */
+.image-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+}
+/* Header Styles */
+header {
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ffffff;
+}
+
+.sticky-section {
+    position: sticky;
+    top: 0; /* Sticks the section to the top of the screen */
+    z-index: 100; /* Ensures it stays above other elements */
+    /* background-color: #ffffff; Optional: Set a background color to prevent content overlap */
+    /* border-bottom: 2px solid #ccc; Optional: Add a visual separator when it sticks */
+    padding: 10px; /* Optional: Add some padding for better aesthetics */
+}
+
+/* General styles for navigation links */
+.nav-link {
+    text-decoration: none;
+    color: #f8f0f0;
+    padding: 8px 20px;
+    border-radius: 15px;
+    transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+    background-color: #525eba; /* Slightly darker highlight on hover */
+}
+
+/* Style for the active tab */
+.nav-link.active {
+    background-color: #525eba; /* Light purple background */
+    color: #ffffff; /* Darker text for contrast */
+    font-weight: bold;
+}
+
+.person {
+    display: flex; /* Arrange items horizontally */
+    align-items: flex-end; /* Vertically align image and text */
+    gap: 20px; /* Space between the image and text */
+    text-align: left; /* Ensure text aligns to the left */
+}
+
+/* .person img {
+    width: 200px;
+    display: block;
+    margin: 0; /* Center the image */
+
+.person img {
+    width: 200px; /* Set image width */
+    height: auto; /* Maintain aspect ratio */
+    flex-shrink: 0; /* Prevent the image from shrinking */
+}
+#person-content {
+    background-color: rgb(19, 21, 22);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px;
+    max-width: 95vw;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two equal-width columns */
+    gap: 20px; /* Space between items */
+}
+
+.person span {
+    position: absolute;
+    bottom: 30px; /* Adjust based on your design */
+    left: 0;
+    right: 0;
+    background: rgb(19, 21, 22);
+    color: #fff;
+    opacity: 0;
+    text-align: left;
+    padding: 5px 0;
+    transition: opacity 0.3s;
+}
+
+.person-tooltip {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    visibility: hidden;
+    z-index: 1000;
+    white-space: nowrap;
+    transform: translate(10px, -50%);
+    pointer-events: none;
+}
+
+.person:hover .person-tooltip {
+    visibility: visible;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+    margin-left: 10px;
+}
+
+/* Navigation Styles */
+nav {
+    margin-top: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    display: inline;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+nav ul li a.active {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* Main Content Styles */
+main {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* justify-self: center; */
+    margin: auto;
+    min-height: 100vh;
+    width: 100%;
+}
+
+
+
+#dataset-list, #dataset-detail {
+    background-color: rgb(19, 21, 22);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px;
+    width: 45vw;
+    max-width: 100%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* DOWNLOAD PAGE */
+#dataset-list-content {
+    background-color: rgb(19, 21, 22);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px;
+    max-width: 95em;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#dataset-info-fullpage {
+    padding: 10px;
+    background-color: rgb(19, 21, 22);
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    min-height: 150px;
+    font-size: 1rem;
+    margin-top: 1px;
+    /* width: 95%; */
+    max-width: 93em;
+}
+
+/* Dataset buttons styles */
+#datasets {
+    list-style-type: none;
+    justify-content: flex-start;
+    padding: 0;
+    margin: 0;
+}
+
+#datasets button {
+    display: inline;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#datasets button:hover {
+    background-color: #d0d0d0;
+}
+
+#datasets button.selected {
+    background-color: #3f51b5;
+    color: white;
+    border: 1px solid #3f51b5;
+}
+
+/* Dataset info styles */
+#dataset-info {
+    padding: 10px;
+    background-color: rgb(19, 21, 22);
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    min-height: 150px;
+    font-size: 1rem;
+    margin-top: 1px;
+    width: 730px;
+    max-width: 1600px;
+}
+
+
+#dataset-info h3 {
+    margin-bottom: 10px;
+}
+
+#dataset-info p {
+    margin: 5px 0;
+}
+
+/* Download button styles */
+#download-button {
+    display: none;
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+#download-progress-button {
+    display: none;
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+#download-button:hover {
+    background-color: #303f9f;
+}
+
+/* Footer styles */
+footer {
+    background-color: #3f51b5;
+    color: white;
+    position: relative;
+    width: 150vw; /* Extends beyond the standard viewport */
+    bottom: 0;
+    padding: 20px 38vw; /* Vertical padding only */
+}
+
+footer div {
+    position: relative;
+    text-align: center; /* Ensures text aligns within its container */
+}
+
+
+/* Stimuli preview styles */
+#stimuli-preview {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    width: 60%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+#video-container {
+    margin-bottom: 20px;
+    margin-right: 20px;
+    width: 25vw;
+}
+
+#video-frame {
+    margin-bottom: 20px;
+}
+
+/* Stimuli ID buttons styles */
+#stimuli-ids-exp1, #stimuli-ids-exp2, #stimuli-ids-exp3, #stimuli-ids-exp4, #stimuli-ids-exp5 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#stimuli-ids-exp1 button, #stimuli-ids-exp2 button, #stimuli-ids-exp3 button, #stimuli-ids-exp4 button, #stimuli-ids-exp5 button {
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#stimuli-ids-exp1 button:hover, #stimuli-ids-exp2 button:hover, #stimuli-ids-exp3 button:hover, #stimuli-ids-exp4 button:hover, #stimuli-ids-exp5 button:hover {
+    background-color: #303f9f;
+}
+
+
+/* EXPERIMENT BUTTONS */
+#exp-ids {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0;
+}
+
+#exp-ids li {
+    margin-bottom: 10px; /* Add spacing between items */
+}
+
+#exp-ids a {
+    background-color: #3f51b5;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    display: inline-block;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+#exp-ids a:hover {
+    background-color: #2c3e94;
+}
+
+/* Style for the selected bubble */
+#exp-ids a.selected {
+    background-color: #1c2a75; /* Darker background for selected state */
+}
+.experiment-content {
+    display: none;
+    margin-top: 20px;
+}
+
+.experiment-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.experiment-content p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+/* Tooltip styles */
+#tooltip {
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    pointer-events: none;
+    z-index: 1000;
+    display: none;
+}
+
+/* Experiment heading styles */
+#exp-heading {
+    background-color: #3f51b5;
+    color: #eee4e4ec;
+    padding: 20px;
+    margin:20px ;
+    border-radius: 8px;
+    width: 95%;
+    margin-bottom: 10px;
+}
+
+#superexp-heading {
+    background-color: #3f51b5;
+    color: #eee4e4ec;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin:20px ;
+    border-radius: 8px;
+    width: 95vw;
+    margin-bottom: 10px;
+}
+
+#exp-content {
+    background-color: rgb(19, 21, 22);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px;
+    width: 95vw;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#subexp-content {
+    background-color: rgb(19, 21, 22);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px;
+    width: 90%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#content-heading {
+    background-color: #3f51b5;
+    align-items: center;
+    justify-content: left;
+    color: #eee4e4ec;
+    padding: 20px;
+    margin:20px ;
+    border-radius: 8px;
+    width: 95vw;
+    max-height: 80px;
+    line-height: 0px;
+    margin-bottom: 10px;
+}
+
+#exp-heading h2 {
+    margin: 0;
+}
+
+/* Available datasets and details */
+#available-datasets, #dataset-details {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 1200px) {
+    .container {
+        flex-direction: column; /* Stack content vertically on smaller screens */
+    }
+
+    .right-side,
+    .info,
+    #plot-display {
+        width: 100%; /* Use full width for each section */
+        margin: 0 auto; /* Center sections */
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px; /* Reduce font size for smaller screens */
+    }
+
+    header h1 {
+        font-size: 1.5em; /* Adjust header size */
+    }
+
+    .button {
+        font-size: 16px; /* Adjust button size */
+    }
+
+    table th,
+    table td {
+        font-size: 12px; /* Make table text smaller */
+    }
+}
+
+@media (max-width: 480px) {
+    .flex-container {
+        flex-direction: column;
+    }
+
+    .right-side,
+    .info,
+    .tablespace {
+        width: 100%;
+        padding: 10px; /* Reduce padding */
+    }
+
+    nav ul li {
+        margin: 5px 0; /* Stack navigation links */
+    }
+
+    header h1 {
+        font-size: 1.2em; /* Smaller header size */
+    }
+
+    .button {
+        font-size: 14px; /* Smaller button font */
+    }
+}
+

@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIDS Dataset Repository</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <script src="{{ url_for('static', filename='experiments_script.js') }}" defer></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+</head>
+<body>
+    <header style="
+    color: #f8f0f0;
+    background-color: black;
+    border-color: rgb(136, 136, 136);
+    padding-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 80px;">
+        <h1>The Brain, Body, and Behaviour Dataset - Neural Engineering Lab, CCNY</h1>
+    </header>
+
+    <header style="color: #f8f0f0; background-color: #1e2760; border-color: rgb(136, 136, 136); border-top: 0px solid rgb(136, 136, 136); border-bottom: 2px solid rgb(136, 136, 136); padding-top: 2px; width: 150%;">
+        <nav>
+            <ul style="list-style: none; display: flex; padding: 0; margin: 0;">
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('experiments_page') }}" class="nav-link">Experiments</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('questionnaires_page') }}" class="nav-link">Questionnaires</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('tutorials_page') }}" class="nav-link">Tutorials</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('research_page') }}" class="nav-link">Research</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('about_page') }}" class="nav-link">About</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('download_page') }}" class="nav-link">Download</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="superexp-heading">
+            <h2 style="width: 100%;">Experiments</h2>
+        </section>
+
+        <section id="exp-content">
+            <div id="exp-ids" style="margin-left: 20px">
+                <div>
+                    <a style="margin-right: 20px" href="javascript:void(0);" onclick="showExperiment('exp1', this)"><h4>Experiment 1</h4></a>
+                    <a style="margin-right: 20px" href="javascript:void(0);" onclick="showExperiment('exp2', this)"><h4>Experiment 2</h4></a>
+                    <a style="margin-right: 20px" href="javascript:void(0);" onclick="showExperiment('exp3', this)"><h4>Experiment 3</h4></a>
+                    <a style="margin-right: 20px" href="javascript:void(0);" onclick="showExperiment('exp4', this)"><h4>Experiment 4</h4></a>
+                    <a style="margin-right: 20px" href="javascript:void(0);" onclick="showExperiment('exp5', this)"><h4>Experiment 5</h4></a>
+                </div>
+            </div>
+
+            <!-- Experiment Content -->
+            <div id="exp1" class="experiment-content">
+                <section id="exp-heading">
+                    <h2>Experiment 1 Dataset</h2>
+                </section>
+
+                <section id="subexp-content">
+                    <div class="flex-container">
+                        <div>
+                            <h2>Experiment Overview</h2>
+                            <img src="static/images/intentionallearning.jpg" style="height: 14vw; margin-top: 1vw; margin-right: 50px">
+                        </div>
+
+                        <div>
+                            <div class="flex-container">
+                                <div id="video-container">
+                                    <h2>Stimuli Preview</h2>
+                                    <!--<p>Select a stimulus ID to view its preview.</p>-->
+                                    <div id="stimuli-ids-exp1">
+                                        <!-- Stimuli ID buttons will be dynamically populated here -->
+                                    </div>
+                                    <div id="video-frame-1"></div>
+                                </div>
+
+                                <div id="quiz-container1">
+                                    <h2>Stimuli Quiz</h2>
+                                    <div class="csv-container" id="csvContainer1">
+                                        <!--<table id="csvTable1">-->
+                                            <!-- CSV content -->
+                                        <!--</table>-->
+                                    </div>
+                                    <button id="csvdownloadBtn1" style="margin-top: 10px; margin-left: 20px;">Download TSV</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <h2><br><u>Experiment Setup</u></h2>
+                    <p>
+                       In experiment 1 we only performed eye tracking, where our subjects watched 5 different informative videos and we tracked their gaze and pupil size. The position of gaze is an overt indicator of attention and this information helps researchers
+                       understand what points of the video they’re focused on and at what points their mind starts wandering away.
+
+                       <br><br>This experiment was a form of intentional learning because the subjects knew they would be questioned about the contents of the video.
+                       There was also a distracted condition in this experiment where participants counted backward silently in the mind, from a randomly chosen prime number between 800 and 1,000, in decrements of 7. This task aimed to distract the subjects from the
+                       stimulus without requiring overt responses and is based on the serial subtraction task used to assess mental capacity and has previously been used to assess attention
+
+
+                       <br><br>The gaze position data was recorded using an Eyelink 1000 eye tracker (SR Research Ltd.). The subjects were free to move their heads, to ensure comfort (no chin rest).
+                       A standard nine-point calibration scheme was used, using manual verification. To ensure stable pupil size recordings, the background color of the calibration screen and all instructions presented to the subjects were set to be the average luminance of all of the videos presented during the experiment.
+
+                       <br><br>In between each stimulus presentation a drift check was performed and tracking was recalibrated if the visual angular error was greater than 2°.
+                       Blinks were detected using the SR research blink detection algorithm and remaining peaks were found using a peak picking algorithm. The blink and 100 ms before and after were filled with linearly interpolated values.
+                    </p>
+
+                    <h2 style="margin-left: 0px;"><u>Modality Matrix</u></h2>
+                    <table style="margin-left: 0px;">
+                        <tr>
+                            <th><u>Experiment 1</u></th>
+                            <td><b><span class="material-symbols-outlined md-36">visibility</span><br>Pupil size</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">eye_tracking</span><br>Gaze position</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">visibility_lock</span><br>Saccades</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">visibility_off</span><br>Blinks</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">respiratory_rate</span><br>Respiration</b></td>
+                            <td><b><span class="material-icons md-36">monitor_heart</span><br>ECG / HR</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">neurology</span><br>EEG</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">face_shake</span><br>Head Movement</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">eda</span><br>EDA</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">poll</span><br>Questionnaires</b></td>
+                        </tr>
+                        <tr>
+                            <th><u>Conditions:</u>
+                                <br>Attentive/Distracted
+                                </th>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_pupil')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_gaze')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_saccades')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_blinks')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="cross" style="color: red;">❌</span></b>
+                            </td>
+                            <td>
+                                <b><span class="cross" style="color: red;">❌</span></b>
+                            </td>
+                            <td>
+                                <b><span class="cross" style="color: red;">❌</span></b>
+                            </td>
+                            <td>
+                                <b><span class="cross" style="color: red;">❌</span></b>
+                            </td>
+                            <td>
+                                <b><span class="cross" style="color: red;">❌</span></b>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment2_questionnaires')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                    </section>
+            </div>
+
+
+
+            <div id="exp2" class="experiment-content" style="display:none;">
+
+                <section id="exp-heading">
+                    <h2>Experiment 2 Dataset</h2>
+                </section>
+
+                <section id="subexp-content">
+                    <div class="flex-container">
+                        <div>
+                            <h2>Experiment Overview</h2>
+                            <img src="static/images/incidentallearning.jpg" style="height: 14vw; margin-top: 1vw; margin-right: 50px;">
+                        </div>
+
+                        <div>
+                            <div class="flex-container">
+                                <div id="video-container">
+                                    <h2>Stimuli Preview</h2>
+                                    <!--<p>Select a stimulus ID to view its preview.</p>-->
+                                    <div id="stimuli-ids-exp2">
+                                        <!-- Stimuli ID buttons will be dynamically populated here -->
+                                    </div>
+                                    <div id="video-frame-2"></div>
+                                </div>
+
+                                <div id="quiz-container2">
+                                    <h2>Stimuli Quiz</h2>
+                                    <div class="csv-container" id="csvContainer2">
+                                        <!--<table id="csvTable2">-->
+                                            <!-- CSV content -->
+                                        <!--</table>-->
+                                    </div>
+                                    <button id="csvdownloadBtn2" style="margin-top: 10px; margin-left: 20px;">Download TSV</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2><br><u>Experiment Setup</u></h2>
+                    <p>
+                        Experiment 2 is incidental learning - where the subjects watched all the videos not knowing they would be questioned about the content of each video all together at the end of the video-watching.
+                        For this experiment we also collected other physiological data - ECG, EEG, Head motion, along with gaze. Subjects watched 5 informative stimuli.
+
+                        <br><br>There was also a distracted condition in this experiment where participants counted backward silently in the mind, from a randomly chosen prime number between 800 and 1,000, in decrements of 7. This task aimed to distract the subjects from the
+                        stimulus without requiring overt responses and is based on the serial subtraction task used to assess mental capacity and has previously been used to assess attention.
+
+                    </p>
+
+                    <h2 style="margin-left: 0px;"><u>Download Raw Data</u></h2>
+                    <table style="margin-left: 0px;">
+                        <tr>
+                            <th><u>Experiment 2</u></th>
+                            <td><b><span class="material-symbols-outlined md-36">visibility</span><br>Pupil size</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">eye_tracking</span><br>Gaze position</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">visibility_lock</span><br>Saccades</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">visibility_off</span><br>Blinks</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">respiratory_rate</span><br>Respiration</b></td>
+                            <td><b><span class="material-icons md-36">monitor_heart</span><br>ECG / HR</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">neurology</span><br>EEG</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">face_shake</span><br>Head Movement</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">eda</span><br>EDA</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">poll</span><br>Questionnaires</b></td>
+                        </tr>
+                        <tr>
+                            <th><u>Conditions:</u>
+                            <br>Attentive/Distracted
+                            </th>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_pupil')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_gaze')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_saccades')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_blinks')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="cross" style="color: red;">❌</span></b>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_pupil')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_pupil')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_blinks')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="cross" style="color: red;">❌</span></b>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment2_questionnaires')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </section>
+            </div>
+
+
+
+            <div id="exp3" class="experiment-content" style="display:none;">
+                <section id="exp-heading">
+                    <h2>Experiment 3 Dataset</h2>
+                </section>
+
+                <section id="subexp-content">
+                    <div class="flex-container">
+                        <div>
+                            <h2>Experiment Overview</h2>
+                            <img src="static/images/intentionallearning.jpg" style="height: 14vw; margin-top: 1vw; margin-right: 50px;">
+                        </div>
+
+                        <div>
+                            <div class="flex-container">
+                                <div id="video-container">
+                                    <h2>Stimuli Preview</h2>
+                                    <!--<p>Select a stimulus ID to view its preview.</p>-->
+                                    <div id="stimuli-ids-exp3">
+                                        <!-- Stimuli ID buttons will be dynamically populated here -->
+                                    </div>
+                                    <div id="video-frame-3"></div>
+                                </div>
+
+                                <div id="quiz-container3">
+                                    <h2>Stimuli Quiz</h2>
+                                    <div class="csv-container" id="csvContainer3">
+                                        <!--<table id="csvTable3">-->
+                                            <!-- CSV content -->
+                                        <!--</table>-->
+                                    </div>
+                                    <button id="csvdownloadBtn3" style="margin-top: 10px; margin-left: 20px;">Download TSV</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2><br><u>Experiment Setup</u></h2>
+                    <p>In experiment 3, subjects were aware they would be tested on the video material each video was presented (Intentional Learning). We tested 6 informational video stimuli, 2 each from 3 different styles of presentation for
+                       this experiment to understand if the video design would have an impact on the attention retention of students. The video styles tested were
+                        <li>Presenter and animation</li>
+                        <li>Presenter and glassboard</li>
+                        <li>Animation and writing hand</li>
+
+                        <br>We record the same data from the subjects as in experiment 2. There was also a distracted condition in this experiment where participants counted backward silently in the mind, from a randomly chosen prime number between 800 and 1,000, in decrements of 7. This task aimed to distract the subjects from the
+                        stimulus without requiring overt responses and is based on the serial subtraction task used to assess mental capacity and has previously been used to assess attention.
+
+                    </p>
+
+                    <h2 style="margin-left: 0px;"><u>Download Raw Data</u></h2>
+                    <table style="margin-left: 0px;">
+                        <tr>
+                            <th><u>Experiment 3</u></th>
+                            <td><b><span class="material-symbols-outlined md-36">visibility</span><br>Pupil size</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">eye_tracking</span><br>Gaze position</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">visibility_lock</span><br>Saccades</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">visibility_off</span><br>Blinks</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">respiratory_rate</span><br>Respiration</b></td>
+                            <td><b><span class="material-icons md-36">monitor_heart</span><br>ECG / HR</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">neurology</span><br>EEG</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">face_shake</span><br>Head Movement</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">eda</span><br>EDA</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">poll</span><br>Questionnaires</b></td>
+                        </tr>
+                        <tr>
+                            <th><u>Conditions:</u>
+                                <br>Attentive/Distracted
+                                </th>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_pupil')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_gaze')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_saccades')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_blinks')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_pupil')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_pupil')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_pupil')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="cross" style="color: red;">❌</span></b>
+                            </td>
+                            <td>
+                                <b><span class="cross" style="color: red;">❌</span></b>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment2_questionnaires')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </section>
+
+            </div>
+
+
+            <div id="exp4" class="experiment-content" style="display:none;">
+                <section id="exp-heading">
+                    <h2>Experiment 4 Dataset</h2>
+                </section>
+
+                <section id="subexp-content">
+                    <div class="flex-container">
+                        <div>
+                            <h2>Experiment Overview</h2>
+                            <img src="static/images/exp4.png" style="height: 14vw; margin-top: 1vw; margin-right: 50px;">
+                        </div>
+
+                        <div>
+                            <div class="flex-container">
+                                <div id="video-container">
+                                    <h2>Stimuli Preview</h2>
+                                    <!--<p>Select a stimulus ID to view its preview.</p>-->
+                                    <div id="stimuli-ids-exp4">
+                                        <!-- Stimuli ID buttons will be dynamically populated here -->
+                                    </div>
+                                    <div id="video-frame-4"></div>
+                                </div>
+
+                                <div id="quiz-container4">
+                                    <h2>Stimuli Quiz</h2>
+                                    <div class="csv-container" id="csvContainer4">
+                                        <!--<table id="csvTable4">-->
+                                            <!-- CSV content -->
+                                        <!--</table>-->
+                                    </div>
+                                    <button id="csvdownloadBtn4" style="margin-top: 10px; margin-left: 20px;">Download TSV</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2><br><u>Experiment Setup</u></h2>
+                    <p>For experiment 4, there are 2 attend conditions where subjects were instructed to watch 3 instructional videos [Stim 04, Stim 05, Stim 06]
+                        in attention condition, and 3 more videos [Stim 01, Stim 02, Stim 03] in the second attention condition. They were tested on the videos shown in the
+                        second attention condition [Stim 01, Stim 02, Stim 03]. Their EEG, EOG, ECG, respiration, pupillary responses, gaze, and head position were recorded
+                        throughout.
+
+                        <br><br>Note: Some EEG signals in this experiment have a completely electrical component of 16Hz, and
+                        is not a physiological artifact. This issue arose during the experimental setup due to feedback from
+                        the Galvanic Skin Response sensor feedback.
+                    </p>
+
+                    <h2 style="margin-left: 0px;"><u>Download Raw Data</u></h2>
+                    <table style="margin-left: 0px;">
+                        <tr>
+                            <th><u>Experiment 3</u></th>
+                            <td><b><span class="material-symbols-outlined md-36">visibility</span><br>Pupil size</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">eye_tracking</span><br>Gaze position</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">visibility_lock</span><br>Saccades</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">visibility_off</span><br>Blinks</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">respiratory_rate</span><br>Respiration</b></td>
+                            <td><b><span class="material-icons md-36">monitor_heart</span><br>ECG / HR</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">neurology</span><br>EEG</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">face_shake</span><br>Head Movement</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">eda</span><br>EDA</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">poll</span><br>Questionnaires</b></td>
+                        </tr>
+                        <tr>
+                            <th><u>Conditions:</u>
+                                <br>Attentive/Distracted
+                                </th>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_pupil')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_gaze')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_saccades')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_blinks')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_pupil')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_pupil')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_pupil')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="cross" style="color: red;">❌</span></b>
+                            </td>
+                            <td>
+                                <b><span class="cross" style="color: red;">❌</span></b>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment2_questionnaires')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+
+            </div>
+            <div id="exp5" class="experiment-content" style="display:none;">
+                <section id="exp-heading">
+                    <h2>Experiment 5 Dataset</h2>
+                </section>
+
+                <section id="subexp-content">
+                    <div class="flex-container">
+                        <div>
+                            <h2>Experiment Overview</h2>
+                            <img src="static/images/exp5.png" style="height: 14vw; margin-top: 1vw; margin-right: 50px;">
+                        </div>
+
+                        <div>
+                            <div class="flex-container">
+                                <div id="video-container">
+                                    <h2>Stimuli Preview</h2>
+                                    <!--<p>Select a stimulus ID to view its preview.</p>-->
+                                    <div id="stimuli-ids-exp5">
+                                        <!-- Stimuli ID buttons will be dynamically populated here -->
+                                    </div>
+                                    <div id="video-frame-5"></div>
+                                </div>
+
+                                <div id="quiz-container5">
+                                    <h2>Stimuli Quiz</h2>
+                                    <div class="csv-container" id="csvContainer5" style='width: 45%;'>
+                                        <!--<table id="csvTable5">-->
+                                            <!-- CSV content -->
+                                        <!--</table>-->
+                                    </div>
+                                    <button id="csvdownloadBtn5" style="margin-top: 10px; margin-left: 20px;">Download TSV</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2><br><u>Experiment Setup</u></h2>
+                    <p>Finally, for experiment 5, subjects were instructed to watch 3 instructional videos in attention condition twice.
+                        Between the two conditions there was an intervention - subjects were incentivised with money for every question they got right
+                        at the test that was given to them at the end of the second condition. They were also shown what questions were going
+                        to be asked, and were made to watch the same videos again. We track the same signals as in experiment 4.
+
+                        <br><br>Note: Some EEG signals in this experiment have a completely electrical component of 16Hz, and is not a
+                        physiological artifact. This issue arose during the experimental setup due to feedback from the Galvanic Skin
+                        Response sensor feedback.
+                    </p>
+
+                    <h2 style="margin-left: 0px;"><u>Download Raw Data</u></h2>
+                    <table style="margin-left: 0px;">
+                        <tr>
+                            <th><u>Experiment 3</u></th>
+                            <td><b><span class="material-symbols-outlined md-36">visibility</span><br>Pupil size</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">eye_tracking</span><br>Gaze position</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">visibility_lock</span><br>Saccades</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">visibility_off</span><br>Blinks</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">respiratory_rate</span><br>Respiration</b></td>
+                            <td><b><span class="material-icons md-36">monitor_heart</span><br>ECG / HR</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">neurology</span><br>EEG</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">face_shake</span><br>Head Movement</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">eda</span><br>EDA</b></td>
+                            <td><b><span class="material-symbols-outlined md-36">poll</span><br>Questionnaires</b></td>
+                        </tr>
+                        <tr>
+                            <th><u>Conditions:</u>
+                                <br>Attentive/Distracted
+                                </th>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_pupil')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_gaze')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_saccades')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_blinks')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_pupil')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_pupil')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment1_pupil')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                            <td>
+                                <b><span class="cross" style="color: red;">❌</span></b>
+                            </td>
+                            <td>
+                                <b><span class="cross" style="color: red;">❌</span></b>
+                            </td>
+                            <td>
+                                <b><span class="tick">✔️</span></b>
+                                <button class="button" onclick="download('experiment2_questionnaires')">
+                                    <b><span class="material-symbols-outlined icon">download</span></b>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+            </div>
+        </section>
+
+
+
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Neural Engineering Lab Dataset Repository. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

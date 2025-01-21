@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Table</title>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script> <!-- Link to script.js -->
+</head>
+<body>
+<div class="flex-container">
+    <div>
+        <section id="container-heading" style = "margin-left: 0px">
+            <h2>Available Data</h2>
+        </section>
+        <section class="tablespace">
+
+        <div >
+
+            <p style="margin-left: 0px;"> (Download individual or complete experiment data from the "Download" section)</p>
+            <table id="modalityTable"  style="border-color: black; margin-left: 0px;">
+                <tr style="background-color: #3f51b5; color: black;">
+                    <th></th>
+                    <th><u>Exp-1</u><br>(n=27)</th>
+                    <th><u>Exp-2</u><br>(n=32)</th>
+                    <th><u>Exp-3</u><br>(n=29)</th>
+                    <th><u>Exp-4</u><br>(n=43)</th>
+                    <th><u>Exp-5</u><br>(n=49)</th>
+                </tr>
+                <tr style="background-color: #3f51b5; border-color: black;">
+                    <th>Conditions</th>
+                    <th>Attentive<br>Distracted</th>
+                    <th>Attentive<br>Distracted</th>
+                    <th>Attentive<br>Distracted</th>
+                    <th>Attentive<br>Attentive</th>
+                    <th>Attentive<br>Intervention</th>
+                </tr>
+                <tr  data-id="1">
+                    <td style="background-color: #3f51b5;">
+                        <b><span class="material-symbols-outlined md-36">visibility</span><br>Pupil size</b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                </tr>
+
+                <tr  data-id="2">
+                    <td style="background-color: #3f51b5;">
+                        <b><span class="material-symbols-outlined md-36">eye_tracking</span><br>Gaze position</b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 </span></b>
+                    </td>
+                </tr>
+
+                <tr  data-id="3">
+                    <td  style="background-color: #3f51b5;">
+                        <b><span class="material-symbols-outlined md-36">visibility_lock</span><br>Saccades</b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 </span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 </span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 </span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 </span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 </span></b>
+                    </td>
+                </tr>
+
+                <tr data-id="4">
+                    <td style="background-color: #3f51b5;">
+                        <b><span class="material-symbols-outlined md-36">visibility_off</span><br>Blinks</b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                </tr>
+
+                <tr data-id="5">
+                    <td style="background-color: #3f51b5;">
+                        <b><span class="material-symbols-outlined md-36">respiratory_rate</span><br>Respiration</b>
+                    </td>
+                    <td>
+                        <b><span class="cross" style="color: red;">❌</span></b>
+                    </td>
+                    <td>
+                        <b><span class="cross" style="color: red;">❌</span></b>
+                    </td>
+                    <td>
+                        <b><span class="cross" style="color: red;">❌</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                </tr>
+
+                <tr data-id="6">
+                    <td style="background-color: #3f51b5;">
+                        <b><span class="material-icons md-36">monitor_heart</span><br>ECG / HR</b>
+                    </td>
+                    <td>
+                        <b><span class="cross" style="color: red;">❌</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                </tr>
+
+                <tr data-id="7">
+                    <td style="background-color: #3f51b5;">
+                        <b><span class="material-symbols-outlined md-36">neurology</span><br>EEG</b>
+                    </td>
+                    <td>
+                        <b><span class="cross" style="color: red;">❌</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                </tr>
+
+                <tr data-id="8">
+                <td style="background-color: #3f51b5;">
+                        <b><span class="material-symbols-outlined md-36">face_shake</span><br>Head Movement</b>
+                    </td>
+                    <td>
+                        <b><span class="cross" style="color: red;">❌</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="background-color: #3f51b5;">
+                        <b><span class="material-symbols-outlined md-36">poll</span><br>Questionnaires</b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                    <td>
+                        <b><span class="tick">&#9989 ️</span></b>
+                    </td>
+                </tr>
+
+                <tr data-id="9">
+                    <td style="background-color: #3f51b5;">
+                        <b><span class="material-symbols-outlined md-36">face</span><br>Facial Landmarks</b>
+                    </td>
+                    <td>
+                        <h4>Coming Soon</h4>
+                        <!-- <b><span class="cross" style="color: red;">❌</span></b> -->
+                    </td>
+                    <td>
+                        <h4>Coming Soon</h4>
+                        <!-- <b><span class="tick">&#9989 ️</span></b>
+                        <button class="button download-btn" data-filename="exp2_eda.txt">
+                            <b><span class="material-symbols-outlined icon">download</span></b>
+                        </button> -->
+                    </td>
+                    <td>
+                        <h4>Coming Soon</h4>
+                        <!-- <b><span class="cross" style="color: red;">❌</span></b> -->
+                    </td>
+                    <td>
+                        <h4>Coming Soon</h4>
+                        <!-- <b><span class="cross" style="color: red;">❌</span></b> -->
+                    </td>
+                    <td>
+                        <h4>Coming Soon</h4>
+                        <!-- <b><span class="cross" style="color: red;">❌</span></b> -->
+                    </td>
+                </tr>
+            </table>
+        </div>
+        </section>
+    </div>
+
+
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIDS Dataset Repository</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <script src="{{ url_for('static', filename='download_script.js') }}" defer></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+</head>
+<script>
+    const personTooltip = document.querySelector('.person-tooltip');
+
+    function showPersonTooltip(event, text) {
+        personTooltip.textContent = text;
+        personTooltip.style.left = event.pageX + 'px';
+        personTooltip.style.top = event.pageY + 'px';
+        personTooltip.style.visibility = 'visible';
+    }
+
+    function hidePersonTooltip() {
+        personTooltip.style.visibility = 'hidden';
+    }
+</script>
+<body>
+    <header style="
+    color: #f8f0f0;
+    background-color: black;
+    border-color: rgb(136, 136, 136);
+    padding-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 80px;">
+        <h1>The Brain, Body, and Behaviour Dataset - Neural Engineering Lab, CCNY</h1>
+    </header>
+
+    <header style="color: #f8f0f0; background-color: #1e2760; border-color: rgb(136, 136, 136); border-top: 0px solid rgb(136, 136, 136); border-bottom: 2px solid rgb(136, 136, 136); padding-top: 2px; width: 150%;">
+        <nav>
+            <ul style="list-style: none; display: flex; padding: 0; margin: 0;">
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('experiments_page') }}" class="nav-link">Experiments</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('questionnaires_page') }}" class="nav-link">Questionnaires</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('tutorials_page') }}" class="nav-link">Tutorials</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('research_page') }}" class="nav-link">Research</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('about_page') }}" class="nav-link">About</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('download_page') }}" class="nav-link">Download</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="superexp-heading">
+            <h2>About</h2>
+        </section>
+        <section id="exp-content">
+            <p>
+                These experiments were carried out at the City College of New York by Dr Jens Madsen and Dr Lucas Parra, and the website was built by Nikhil Kuppa.
+                <br><br>If you have any questions regarding the datasets, experiments or the research published, please contact Dr Madsen at jmadsen@ccny.cuny.edu.
+            </p>
+        </section>
+
+        <section id="superexp-heading">
+            <h2>People</h2>
+        </section>
+        <section id="person-content">
+            <div class="person">
+                <a href="https://jensmadsen.com/" target="_blank">
+                    <img src="static/images/jens.jpg" alt="Jens Madsen" onmousemove="showPersonTooltip(event, 'Click to visit Jens Madsen\'s website')" onmouseout="hidePersonTooltip()">
+                <div class="person-tooltip"></div>
+                </a>
+                <div class="person-content">
+                    <br><strong>Jens Madsen, Ph.D.</strong>
+                    <p>Contributions: Experiment design, Experiment supervision,<br>Data collection, Data processing</p>
+                    <p>E-mail: jmadsen@ccny.cuny.edu</p>
+                </div>
+            </div>
+
+            <div class="person">
+                <a href="https://linkedin.com/in/nikhilkuppa" target="_blank">
+                    <img src="static/images/nikhil2.png" alt="Nikhil Kuppa">
+                    <span>Click to visit Nikhil's LinkedIn</span>
+                </a>
+                <div class="person-content">
+                    <strong>Nikhil Kuppa, M.S.</strong>
+                    <p>Contributions: Data formatting, Quality Check, Website development</p>
+                    <p>E-mail: nkk2126@columbia.edu</p>
+                </div>
+            </div>
+
+            <div class="person">
+                <img src="static/images/sara.png" alt="Sara Julio">
+                <div class="person-content">
+                    <br><strong>Sara U. Julio, Ph.D.</strong>
+                    <p>Contributions: Data collection</p>
+                </div>
+            </div>
+
+            <div class="person">
+                <img src="static/images/pawel.jpeg" alt="Pawel Gucik">
+                <div class="person-content">
+                    <br><strong>Pawel lJ. Gucik, Ph.D.</strong>
+                    <p>Contributions: Data collection</p>
+                </div>
+            </div>
+
+            <div class="person">
+                <a href="https://parralab.org" target="_blank">
+                    <img src="static/images/lucas.png" alt="Lucas Parra">
+                    <span>Click to visit the Parra Lab website</span>
+                </a>
+                <div class="person-content">
+                    <br><strong>Lucas Parra, Ph.D.</strong>
+                    <p>Principal Investigator - Parra Lab, CCNY</p>
+                    <p>E-mail: parra@ccny.cuny.edu</p>
+                </div>
+            </div>
+        </section>
+
+        <!--<div>-->
+        <!--    <section id="superexp-heading">-->
+        <!--        <h2>Acknowledgements</h2>-->
+        <!--    </section>-->
+        <!--    <section id="exp-content">-->
+        <!--        <p>We acknowledge support from the National Science Foundation Grant DRL-1660548. We also thank all 180 volunteers for participating in this data collection.</p>-->
+        <!--    </section>-->
+        <!--</div>-->
+
+        <div class="flex-container">
+
+            <div>
+                <section id="container-heading">
+                    <h2>Acknowledgements</h2>
+                </section>
+                <section id="plot-display">
+                    <div id="container-content">
+                    <p>We acknowledge support from the National Science Foundation Grant DRL-1660548. We also thank all the subjects for participating in this data collection.</p>
+                    </div>
+                </section>
+            </div>
+
+            <div>
+                <section id="container-heading">
+                    <h2>Conflicts of Interest</h2>
+                </section>
+                <section id="plot-display">
+                    <div id="container-content">
+                        <p>The authors declare no competing/conflict of interests</p>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+
+        <div>
+            <section id="superexp-heading">
+                <h2>When using this resource, please cite: </h2>
+            </section>
+            <section id="exp-content">
+                <p><strong><u>Experiment 1, 2, 3:</u></strong><br><br> <i> Madsen J, Júlio SU, Gucik PJ, Steinberg R, Parra LC. Synchronized eye movements predict test scores in online video education.
+                    Proc Natl Acad Sci U S A. 2021 Feb 2;118(5):e2016980118. <br>doi: 10.1073/pnas.2016980118. PMID: 33509928; PMCID: PMC7865179. </i> </p>
+                <p><strong><u>Experiment 4, 5:</u></strong><br><br> <i> Jens Madsen, Lucas C Parra, Cognitive processing of a common stimulus synchronizes brains, hearts, and eyes,
+                    PNAS Nexus, Volume 1, Issue 1, March 2022, pgac020, <br>https://doi.org/10.1093/pnasnexus/pgac020 </i> </p>
+            </section>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Neural Engineering Lab Dataset Repository. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

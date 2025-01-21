@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIDS Dataset Repository</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <script src="{{ url_for('static', filename='download_script.js') }}" defer></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+</head>
+
+<script>
+    const dois = [
+        "10.1073/pnas.2016980118",
+        "10.1093/pnasnexus/pgac020",
+        "10.1016/j.celrep.2021.109692"
+    ];
+
+    async function fetchMetadata() {
+        const citationsContainer = document.getElementById("citations");
+        citationsContainer.innerHTML = "<p>Loading metadata...</p>";
+
+        const baseURL = "https://api.crossref.org/works/";
+        try {
+            const metadataPromises = dois.map(async (doi) => {
+                // Fetch metadata for the current DOI
+                const response = await fetch(`${baseURL}${doi}`);
+                if (!response.ok) throw new Error(`Error fetching metadata for DOI: ${doi}`);
+                const data = await response.json();
+
+                // Extract metadata
+                const { title, author, published, "container-title": journal, DOI } = data.message;
+                // Determine journal-specific image and link
+                let journalImage = "";
+                if (journal && journal[0]) { // Ensure journal data is available
+                    const journalTitle = journal[0].toLowerCase(); // Normalize to lowercase
+
+                    // Log the journal title to verify exact string
+                    console.log("Normalized Journal Title: ", journalTitle);
+
+                    // Assign the appropriate image based on the journal
+                    if (journalTitle.includes("nexus")) {
+                        journalImage = "static/images/pnasnexus.jpg"; // PNAS Nexus
+                    } else if (journalTitle.includes("cell reports")) {
+                        journalImage = "static/images/cellreports.png"; // Cell Reports
+                    } else {
+                        journalImage = "static/images/pnas.jpg"; // Standard PNAS
+                    }
+                }
+
+                // Generate the HTML for each paper
+                return `
+                <div style="display: flex; flex-direction: column; align-items: flex-start; margin: 20px; flex: 1;">
+                    <a href="https://doi.org/${DOI}" target="_blank">
+                        <img src="${journalImage}" alt="${journal[0]}" style="height: 23vw; margin-bottom: 15px;">
+                    </a>
+                    <div style="text-align: left; color: #fff;">
+                        <strong>${title[0]}</strong> <br>
+                        ${author.map(a => `${a.given} ${a.family}`).join(", ")}. <br>
+                        <em>${journal[0]}</em>, ${published["date-parts"][0][0]}. <br>
+                        DOI: <a href="https://doi.org/${DOI}" target="_blank">${DOI}</a>
+                    </div>
+                </div>
+                `;
+            });
+
+            const metadata = await Promise.all(metadataPromises);
+
+            // Arrange metadata in a grid layout
+            citationsContainer.innerHTML = `
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                    ${metadata.join("")}
+                </div>
+            `;
+        } catch (error) {
+            citationsContainer.innerHTML = `<p>Error loading metadata: ${error.message}</p>`;
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", fetchMetadata);
+</script>
+
+
+<body>
+    <header style="
+    color: #f8f0f0;
+    background-color: black;
+    border-color: rgb(136, 136, 136);
+    padding-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 80px;">
+        <h1>The Brain, Body, and Behaviour Dataset - Neural Engineering Lab, CCNY</h1>
+    </header>
+
+    <header style="color: #f8f0f0; background-color: #1e2760; border-color: rgb(136, 136, 136); border-top: 0px solid rgb(136, 136, 136); border-bottom: 2px solid rgb(136, 136, 136); padding-top: 2px; width: 150%;">
+        <nav>
+            <ul style="list-style: none; display: flex; padding: 0; margin: 0;">
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('experiments_page') }}" class="nav-link">Experiments</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('questionnaires_page') }}" class="nav-link">Questionnaires</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('tutorials_page') }}" class="nav-link">Tutorials</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('research_page') }}" class="nav-link">Research</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('about_page') }}" class="nav-link">About</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('download_page') }}" class="nav-link">Download</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="exp-content">
+            <h3 style='margin-left: 20px;'>Published Research Enabled by the Dataset</h3>
+            <div id="citations">
+                <!-- Citations will be dynamically inserted here -->
+            </div>
+        </section>
+
+
+
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Neural Engineering Lab Dataset Repository. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

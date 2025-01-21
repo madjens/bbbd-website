@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIDS Dataset Repository</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <script src="{{ url_for('static', filename='experiments_script.js') }}" defer></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+</head>
+<body>
+    <header style="
+    color: #f8f0f0;
+    background-color: black;
+    border-color: rgb(136, 136, 136);
+    padding-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 80px;">
+        <h1>The Brain, Body, and Behaviour Dataset - Neural Engineering Lab, CCNY</h1>
+    </header>
+
+    <header style="color: #f8f0f0; background-color: #1e2760; border-color: rgb(136, 136, 136); padding-top: 2px;">
+        <nav>
+            <ul style="list-style: none; display: flex; padding: 0; margin: 0;">
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('experiments_page') }}" class="nav-link">Experiments</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('questionnaires_page') }}" class="nav-link">Questionnaires</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('tutorials_page') }}" class="nav-link">Tutorials</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('research_page') }}" class="nav-link">Research</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('about_page') }}" class="nav-link">About</a>
+                </li>
+                <li>|</li>
+                <li style="margin-right: 10px;">
+                    <a href="{{ url_for('download_page') }}" class="nav-link">Download</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="superexp-heading">
+            <h2>Questionnaires</h2>
+        </section>
+
+        <section id="exp-content">
+            <div id="exp-ids" style="margin-left: 20px">
+                <div>
+                    <a style="margin-right: 20px" href="javascript:void(0);" onclick="showExperiment('exp1', this)"><h4>Stimuli</h4></a>
+                    <a style="margin-right: 20px" href="javascript:void(0);" onclick="showExperiment('exp2', this)"><h4>ASRS</h4></a>
+                    <a style="margin-right: 20px" href="javascript:void(0);" onclick="showExperiment('exp3', this)"><h4>DigitSpan</h4></a>
+                </div>
+            </div>
+
+            <!-- Experiment Content -->
+            <div id="exp1" class="experiment-content" style="display:none;">
+                <section id="exp-heading">
+                    <h2>Stimuli-Based Quiz</h2>
+                </section>
+
+                <section id="subexp-content" style="margin-top: 0px;">
+                    <h2 style="margin-top: 0px;"><br><u>Stimuli Quiz:</u></h2>
+
+                    <p>
+                        The questions across stimuli varied based on the content and objectives of each video. Participants were exposed to a range of question types designed to evaluate understanding, engagement, and the ability to infer and apply knowledge. Below is an overview of the structure:
+                    </p>
+                    <ul>
+                        <li><strong>Stimulus-Specific Focus:</strong> Each video prompted questions specific to the concepts covered in the video.</li>
+                        <br>
+                        <li><strong>Question Types:</strong>
+                            <ul>
+                                <li><strong>Domain Questions (Pre-Video Watching):</strong> These questions were asked before watching the video to assess participants' prior knowledge.</li>
+                                <li><strong>Memory Questions (Post-Video Watching):</strong> These questions were asked after viewing the video, evaluating participants' understanding and ability to recall new knowledge gained from the video.</li>
+                            </ul>
+                        </li>
+                        <p>
+                            For every stimulus, we presented 10-11 questions per question type.  Find these quizzes in the experiments section of this website!
+                        </p>
+                        <p>
+                            Note: Due to the nature of the experiment design, not all stimuli quizzes have domain questions. However, there are memory questions for every stimulus' quiz.
+                        </p>
+                    </ul>
+                    <p>
+                        Each question set was designed to align with the video's primary learning objectives, ensuring relevance and depth in assessing participants' understanding.
+                    </p>
+
+                    <h2 style="margin-top: 0px;"><br><u>Engagement Questions:</u></h2>
+                    <p>
+                        To better understand user interaction and engagement, we included a series of reflective questions. These questions
+                        were designed to gather insights into the viewers' familiarity with the content, their learning experience,
+                        and the perceived difficulty of the tasks.
+                    </p>
+
+                    <h3>Response Options</h3>
+                    <p>
+                        Participants were asked to share their level of agreement using a 7-point Likert scale:
+                    </p>
+                    <ul>
+                        <li>Strongly Disagree</li>
+                        <li>Somewhat Disagree</li>
+                        <li>Disagree</li>
+                        <li>Neutral</li>
+                        <li>Agree</li>
+                        <li>Somewhat Agree</li>
+                        <li>Strongly Agree</li>
+                    </ul>
+
+                    <h3>Purpose</h3>
+                    <p>
+                        The engagement questions provide valuable feedback on:
+                    </p>
+                    <ul>
+                        <li>The relevance and clarity of the content presented in the videos.</li>
+                        <li>Participants' prior familiarity with the subject matter.</li>
+                        <li>The educational impact and perceived challenge of the tasks.</li>
+                    </ul>
+                    <p>
+                    </p>
+                </section>
+            </div>
+
+            <div id="exp2" class="experiment-content">
+                <section id="exp-heading">
+                    <h2>ASRS</h2>
+                </section>
+
+                <section id="subexp-content" style="margin-top: 0px;">
+                    <h2 style="margin-top: 0px;"><br><u>ASRS:</u> Adult ADHD Self-Report Scale</h2>
+                    <p>
+                        The <strong>Adult ADHD Self-Report Scale (ASRS)</strong> is a widely used tool for assessing ADHD symptoms in adults.
+                        This questionnaire, included in our dataset, is designed to evaluate the frequency and severity of behaviors and challenges
+                        commonly associated with ADHD. Below, we provide a detailed explanation of its structure, response options, scoring methods,
+                        and interpretation guidelines.
+                    </p>
+
+                    <h3>Questionnaire Structure</h3>
+                    <p>
+                        The ASRS consists of 18 questions addressing two key dimensions of ADHD:
+                    </p>
+                    <ul>
+                        <li><strong>Inattention:</strong> Questions focus on difficulties such as concentrating, forgetfulness, and disorganization.</li>
+                        <li><strong>Hyperactivity:</strong> Questions assess behaviors like restlessness, impulsivity, and excessive activity.</li>
+                    </ul>
+                    <p>Each question prompts participants to reflect on how often they experience specific challenges in their daily lives.</p>
+
+                    <h3>Response Options</h3>
+                    <p>
+                        Participants respond to each question using the following scale:
+                    </p>
+                    <ul>
+                        <li>Never</li>
+                        <li>Rarely</li>
+                        <li>Sometimes</li>
+                        <li>Often</li>
+                        <li>Very Often</li>
+                    </ul>
+
+                    <h3>Scoring Methods</h3>
+                    <p>The ASRS offers multiple scoring approaches:</p>
+                    <ul>
+                        <li>
+                            <strong>Dichotomous Scoring:</strong>
+                            Responses are categorized as "0" (no symptoms) or "1" (presence of symptoms).
+                            <ul>
+                                <li><strong>Screener Score:</strong> Based on the first six items. A score of <strong>4 or more</strong> indicates high ADHD risk.</li>
+                                <li><strong>Full Scale Score:</strong> Evaluates all 18 questions for a broader assessment.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Likert Scoring:</strong>
+                            Responses are assigned numerical values (Never = 0, Rarely = 1, Sometimes = 2, Often = 3, Very Often = 4).
+                            <ul>
+                                <li><strong>Screener Score:</strong> Severity thresholds:
+                                    <ul>
+                                        <li>Low: 0–9</li>
+                                        <li>Mild to Moderate: 10–13</li>
+                                        <li>High: 14–17</li>
+                                        <li>Very High: 18–24</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Full Scale Score:</strong> Severity thresholds:
+                                    <ul>
+                                        <li>Low: 0–30</li>
+                                        <li>Mild to Moderate: 31–39</li>
+                                        <li>High: 40–49</li>
+                                        <li>Very High: 50–72</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Subscores:</strong> These scores evaluate specific symptom domains:
+                            <ul>
+                                <li><strong>Hyperactivity Subscore:</strong> High symptoms are indicated by a score of <strong>18 or more</strong>.</li>
+                                <li><strong>Inattention Subscore:</strong> High symptoms are indicated by a score of <strong>18 or more</strong>.</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h3>Interpretation Guidelines</h3>
+                    <p>
+                        <strong>Screener Scores:</strong> Offer a quick and reliable method to identify individuals at risk of ADHD.<br>
+                        <strong>Full Scale Scores:</strong> Provide a comprehensive assessment of symptom severity.<br>
+                        <strong>Subscores:</strong> Help differentiate between hyperactivity and inattention symptoms for a deeper understanding of specific challenges.
+                    </p>
+
+                    <h3>References</h3>
+                    <p>
+                        For more information about the ASRS and its scoring methods, please refer to:
+                    </p>
+                    <ul>
+                        <li><a href="https://www.hcp.med.harvard.edu/ncs/ftpdir/adhd/ASRS_v1.1_screener(6Q)_scoring_update.pdf" target="_blank">ASRS Screener Scoring Update</a></li>
+                        <li><a href="https://novopsych.com.au/assessments/diagnosis/adult-adhd-self-report-scale-asrs/" target="_blank">ASRS Full Scale Documentation</a></li>
+                    </ul>
+                </section>
+            </div>
+
+
+
+            <div id="exp3" class="experiment-content" style="display:none;">
+
+                <section id="exp-heading">
+                    <h2>DigitSpan (Working Memorry Assessment Task)</h2>
+                </section>
+
+                <section id="subexp-content" style="margin-top: 0px;">
+                    <h2 style="margin-top: 0px;"><br><u>DigitSpan</u></h2>
+                    <p>
+                        The <strong>Digit Span Task</strong> is a widely recognized cognitive test used to measure working memory capacity.
+                        This task evaluates an individual's ability to recall sequences of numbers in reverse order, providing insights into
+                        memory retention and processing capabilities.
+                    </p>
+
+                    <h3>Scoring</h3>
+                    <p>The Digit Span Task includes two key scoring methods:</p>
+                    <ul>
+                        <li>
+                            <strong>Score:</strong>
+                            <ul>
+                                <li>This represents the maximum number of digits successfully recalled backwards during the task.</li>
+                                <li>Scores range from <strong>3 to 7</strong>, with higher scores indicating stronger working memory capacity.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Weighted Score:</strong>
+                            <ul>
+                                <li>This score accounts for the difficulty levels and consistency of performance.</li>
+                                <li>It assigns greater weight to sequences with longer digit spans, emphasizing sustained accuracy and cognitive effort.</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h3>Interpretation</h3>
+                    <p>
+                        The Digit Span Task results provide valuable insights into cognitive function. Higher scores reflect better
+                        working memory and attention control, while lower scores may indicate challenges in retaining and processing information.
+                    </p>
+                </section>
+            </div>
+
+            </div>
+        </section>
+
+
+
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Neural Engineering Lab Dataset Repository. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

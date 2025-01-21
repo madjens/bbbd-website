@@ -1,0 +1,22 @@
+type	question	option1	option2	option3	option4
+domain	What kind of light bulbs are the most common in homes?	Incandescent bulbs	Fluorescent bulbs	Light Emitting Diodes	Halogen light bulbs
+domain	What kind of light bulb is the most efficient?	Light Emitting Diodes	Incandescent bulbs	Fluorescent bulbs	Other
+domain	What is the efficiency % of the incandescent light bulb?	Less than 10%	30 percent	50 percent	80 percent
+domain	Mark the INCORRECT sentence	Light bulbs are only ever used for the purpose of lighting the environment	Almost half of the electricity used by industry is for lighting	Some light bulbs contain gas inside of the bulbs	Prior to 1900 electric light bulbs did not have filaments
+domain	What percent of home electric bills is due to electric lights?	25 percent	90 percent	50 percent	5 percent
+domain	What is the electrical voltage used for most common US domestic appliances?	120 V	110 V	220 V	230 V
+domain	What is the average lifespan of an incandescent light bulb?	1200 hours	500 hours	2000 hours	3000 hours
+domain	Light bulbs produce light and….	Heat	Electrons	Protons	They only produce light
+domain	What is the metal piece inside of a light bulb called?	Filament	Filling	Electrode	Semiconducting crystal
+domain	Fill in the blanks: Light bulbs convert _______ energy into ________ energy.	electrical; light	electrical; chemical	kinetic; potential	All options are correct
+memory	When was the incandescent light bulb created?	19th Century	18th Century	17th Century	20th Century
+memory	The bulb does all of the following EXCEPT:	Increases the brightness of the light emitted	Allows the filament to produce light more efficiently	Prevents gas from escaping from inside the bulb	Prevents oxygen from reaching the filament
+memory	What is the role of the halogen gas in halogen bulbs?	All options are correct	Keep the light bulb clean	Prevent the wire from burning out	Helps redeposit atoms back onto the filament
+memory	Which gas exists in halogen light bulbs?	Hydrogen bromide	Mercury chloride	Nitrogen bromide	Nitrogen fluoride
+memory	Why don’t vapor lamps need a fluorescent coating?	Because they emit mainly visible light	Because they don’t use gas	Because they don’t have a bulb	All options are correct
+memory	What happens when the electrons bump into the mercury atoms in the fluorescent bulbs?	The energy of the collision makes the atoms get excited	The energy of the collision makes the atoms relax	The energy of the collision makes the atoms keep the inside of the bulb clean	The energy of the collision splits the atom and releases energy
+memory	Which of the following statements best describes the reactions that emit light within a fluorescent tube?	Electrons in the electrical current collide with mercury gas atoms, causing the atoms to emit light in their excited state	Chlorine gas in the tubes excites the electrons in the electrical current to emit light	Chemical reactions cause the hydrogen atoms in the tube to collide with the electrons, which emit light in their excited state	None of the options are correct
+memory	What is fluorescence?	The process of absorbing ultraviolet light and re-emitting it as more visible light	The process of converting electrical current into visible light	The process of capturing the atoms that evaporates of the filament and put them back where they belong	The process of keeping the inside of the bulb clean and clear
+memory	Suppose you have a large warehouse or a street that you need to light, which one of the following would you use?	Vapor lamps	LED	Any light producing source	Halogens
+memory	The LED semiconductors has 2 layers, one ____________ while the other ____________.	Provides electrons with a lot of energy, Provides a place for the electrons to relax	Provides tungsten atoms, Provides a place for the electrons relax	Provides electrons with a lot of energy, Provides a place for the electrons absorb energy	None of options are correct
+memory	How does a crystal of semiconducting gallium interact to form light in an LED bulb? Choose the best answer.	Electrons are transported from one end of the diode to the other and emit light	Electrical current moves electrons from a relaxed state to an excited state, which results in light	Thermal energy transports the electrons from a higher state of energy to a lower state of energy, emitting light	None of the options are correct
