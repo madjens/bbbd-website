@@ -56,9 +56,9 @@ body {
     background-color: rgb(19, 21, 22);
     border-radius: 8px;
     padding: 20px;
-    margin: 1em;
+    margin: 1vw;
     /* margin-right: 2em; */
-    width: 45vw;
+    width: 46vw;
     max-height: 1250px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
