@@ -1,11 +1,4 @@
 /* General Styles */
-html {
-    transform: scale(0.95);
-    transform-origin: top left;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-}
 
 body {
     /* background-color: #181a1b; */
