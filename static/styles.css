@@ -2,6 +2,7 @@
 html {
     transform: scale(0.95);
     transform-origin: top left;
+    width: 105.26% /* (1/0.95) */
 }
 
 body {
