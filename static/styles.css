@@ -62,9 +62,9 @@ body {
 }
 #plotraw, #plotderived {
     flex: 1; /* Allow plots to grow evenly */
-    width: 90%; /* Ensure two plots fit side by side */
+    width: 98%; /* Ensure two plots fit side by side */
     max-height: 85%; /* Adjust the height as needed */
-    padding: 10px; /* Add padding inside the sections */
+    padding: 5px; /* Add padding inside the sections */
     text-align: center;
 }
 
