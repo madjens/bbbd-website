@@ -139,6 +139,12 @@ strong {
     margin-bottom: 10px;
 }
 
+.wrapper {
+    transform: scale(0.9);
+    transform-origin: top left;
+    width: 100vw;
+    height: 100vh;
+}
 
 table {
     /* border-color:#000; */
