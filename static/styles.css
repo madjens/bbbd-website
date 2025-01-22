@@ -1,4 +1,9 @@
 /* General Styles */
+html {
+    transform: scale(0.9);
+    transform-origin: top left;
+}
+
 body {
     /* background-color: #181a1b; */
     background-color: black;color: #eee4e4ec;
