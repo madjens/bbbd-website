@@ -191,11 +191,10 @@ def download_file():
             full_key = base_path + '/' + filename
             response = s3.get_object(Bucket=bucket_name, Key=full_key)
             file_stream = io.BytesIO(response['Body'].read())
-            print(f"Returning file: {download_name} from S3 key: {full_key}")
-            return send_file(file_stream, download_name=download_name, as_attachment=True)
+            return send_file(file_stream, as_attachment=True)
 
     except Exception as e:
-        print(f"Error: {e}, {full_key}, {download_name}")
+        print(f"Error: {e}, {full_key}")
         return "Internal Server Error", 500
 
 # @app.route('/progress/<exp_name>', methods=['GET'])
