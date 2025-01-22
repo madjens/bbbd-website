@@ -45,6 +45,7 @@ body {
 }
 
 .flex-container {
+    flex: 1 1 0;
     display: flex; /* Use flexbox for layout */
     flex-direction: row; /* Arrange items horizontally */
     align-items: flex-start; /* Align items to the top */
