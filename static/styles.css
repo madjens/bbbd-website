@@ -49,8 +49,8 @@ body {
     display: flex; /* Use flexbox for layout */
     flex-direction: row; /* Arrange items horizontally */
     align-items: flex-start; /* Align items to the top */
-    gap: 0.001vw; /* Slightly larger gap for better spacing */
-    width: 95vw; /* Ensure full width without horizontal scroll */
+    gap: 0.002vw; /* Slightly larger gap for better spacing */
+    width: 98vw; /* Ensure full width without horizontal scroll */
 }
 #plot-display {
     background-color: rgb(19, 21, 22);
