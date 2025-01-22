@@ -121,6 +121,24 @@ strong {
     margin-bottom: 20px;
     color: white;
 }
+
+#hometable-heading {
+    background-color: #3f51b5;
+    /* #3f51b5; */
+    color: #eee4e4ec;
+    padding-top: 15px;
+    display: flex;           /* Use flexbox */
+    align-items: center;     /* Center content vertically */
+    justify-content: left;
+    padding: 20px;
+    height: 25px;
+    margin-top:20px ;
+    margin-left: 0px;
+    border-radius: 8px;
+    width: 45vw;
+    margin-bottom: 20px;
+}
+
 .hometablespace {
     background-color: rgb(22, 24, 24);
     border-radius: 8px;
