@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(dataset => {
 
                 const bidsname = dataset.filename.replace(/\.zip$/, '');
-                const bidsdirname = dataset.bidsname;
+                const bidsdirname = dataset.bidsname.replace(/\.zip$/, '');
 
                 // Static Subjects
                 const subjects = ['16', '17', '18'];

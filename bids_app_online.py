@@ -246,17 +246,17 @@ def read_gzip_data(url, data_container, signal_type):
 def load_signal(bidsname, sub, ses, stim):
     print(f"Received sub: {sub}, ses: {ses}, stim: {stim}")
 
-    raw_ecg_path = 'https://fcp-indi.s3.amazonaws.com/' + prefix_s3 + f'/{bidsname}/sub-{sub}/ses-{ses}/beh/sub-{sub}_ses-{ses}_task-stim{stim}_recording-ecg_physio.tsv.gz'
-    raw_gaze_path = 'https://fcp-indi.s3.amazonaws.com/' + prefix_s3 + f'/{bidsname}/sub-{sub}/ses-{ses}/eyetrack/sub-{sub}_ses-{ses}_task-stim{stim}_gaze_eyetrack.tsv.gz'
-    raw_pupil_path = 'https://fcp-indi.s3.amazonaws.com/' + prefix_s3 + f'/{bidsname}/sub-{sub}/ses-{ses}/eyetrack/sub-{sub}_ses-{ses}_task-stim{stim}_pupil_eyetrack.tsv.gz'
-    raw_head_path = 'https://fcp-indi.s3.amazonaws.com/' + prefix_s3 + f'/{bidsname}/sub-{sub}/ses-{ses}/eyetrack/sub-{sub}_ses-{ses}_task-stim{stim}_head_eyetrack.tsv.gz'
+    raw_ecg_path = 'https://fcp-indi.s3.amazonaws.com/' + prefix_s3 + f'/plot_data_website/{bidsname}/sub-{sub}/ses-{ses}/beh/sub-{sub}_ses-{ses}_task-stim{stim}_recording-ecg_physio.tsv.gz'
+    raw_gaze_path = 'https://fcp-indi.s3.amazonaws.com/' + prefix_s3 + f'/plot_data_website/{bidsname}/sub-{sub}/ses-{ses}/eyetrack/sub-{sub}_ses-{ses}_task-stim{stim}_gaze_eyetrack.tsv.gz'
+    raw_pupil_path = 'https://fcp-indi.s3.amazonaws.com/' + prefix_s3 + f'/plot_data_website/{bidsname}/sub-{sub}/ses-{ses}/eyetrack/sub-{sub}_ses-{ses}_task-stim{stim}_pupil_eyetrack.tsv.gz'
+    raw_head_path = 'https://fcp-indi.s3.amazonaws.com/' + prefix_s3 + f'/plot_data_website/{bidsname}/sub-{sub}/ses-{ses}/eyetrack/sub-{sub}_ses-{ses}_task-stim{stim}_head_eyetrack.tsv.gz'
 
-    derived_ecg_path = 'https://fcp-indi.s3.amazonaws.com/' + prefix_s3 + f'/{bidsname}/derivatives/sub-{sub}/ses-{ses}/beh/sub-{sub}_ses-{ses}_task-stim{stim}_desc-filteredECG.tsv.gz'
-    derived_hr_path = 'https://fcp-indi.s3.amazonaws.com/' + prefix_s3 + f'/{bidsname}/derivatives/sub-{sub}/ses-{ses}/beh/sub-{sub}_ses-{ses}_task-stim{stim}_desc-heartrate.tsv.gz'
-    derived_br_path = 'https://fcp-indi.s3.amazonaws.com/' + prefix_s3 + f'/{bidsname}/derivatives/sub-{sub}/ses-{ses}/beh/sub-{sub}_ses-{ses}_task-stim{stim}_desc-breathrate.tsv.gz'
+    derived_ecg_path = 'https://fcp-indi.s3.amazonaws.com/' + prefix_s3 + f'/plot_data_website/{bidsname}/derivatives/sub-{sub}/ses-{ses}/beh/sub-{sub}_ses-{ses}_task-stim{stim}_desc-filteredECG.tsv.gz'
+    derived_hr_path = 'https://fcp-indi.s3.amazonaws.com/' + prefix_s3 + f'/plot_data_website/{bidsname}/derivatives/sub-{sub}/ses-{ses}/beh/sub-{sub}_ses-{ses}_task-stim{stim}_desc-heartrate.tsv.gz'
+    derived_br_path = 'https://fcp-indi.s3.amazonaws.com/' + prefix_s3 + f'/plot_data_website/{bidsname}/derivatives/sub-{sub}/ses-{ses}/beh/sub-{sub}_ses-{ses}_task-stim{stim}_desc-breathrate.tsv.gz'
 
-    derived_pupil_path = 'https://fcp-indi.s3.amazonaws.com/' + prefix_s3 + f'/{bidsname}/derivatives/sub-{sub}/ses-{ses}/eyetrack/sub-{sub}_ses-{ses}_task-stim{stim}_desc-pupil_eyetrack.tsv.gz'
-    derived_gaze_path = 'https://fcp-indi.s3.amazonaws.com/' + prefix_s3 + f'/{bidsname}/derivatives/sub-{sub}/ses-{ses}/eyetrack/sub-{sub}_ses-{ses}_task-stim{stim}_desc-gaze_eyetrack.tsv.gz'
+    derived_pupil_path = 'https://fcp-indi.s3.amazonaws.com/' + prefix_s3 + f'/plot_data_website/{bidsname}/derivatives/sub-{sub}/ses-{ses}/eyetrack/sub-{sub}_ses-{ses}_task-stim{stim}_desc-pupil_eyetrack.tsv.gz'
+    derived_gaze_path = 'https://fcp-indi.s3.amazonaws.com/' + prefix_s3 + f'/plot_data_website/{bidsname}/derivatives/sub-{sub}/ses-{ses}/eyetrack/sub-{sub}_ses-{ses}_task-stim{stim}_desc-gaze_eyetrack.tsv.gz'
 
     signal_data = {
         'raw': {
