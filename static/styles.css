@@ -121,6 +121,16 @@ strong {
     margin-bottom: 20px;
     color: white;
 }
+.hometablespace {
+    background-color: rgb(22, 24, 24);
+    border-radius: 8px;
+    padding: 2vw;
+    margin-right: 1vw;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: block;
+    width: 45vw;
+    /*margin-left: 1vw;*/
+}
 .tablespace {
     background-color: rgb(22, 24, 24);
     border-radius: 8px;
