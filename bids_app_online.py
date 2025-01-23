@@ -169,16 +169,18 @@ def download_file():
     exp = request.args.get('exp')
     datatype = request.args.get('datatype')
 
-    base_path = f"data/Projects/CUNY_MADSEN/BBBD/matrix_data/{exp}.zip"
+    base_path = f"data/Projects/CUNY_MADSEN/BBBD/matrix_data/{datatype}/{exp}"
     s3 = boto3.client('s3', config=Config(signature_version=UNSIGNED))
 
     bucket_name = 'fcp-indi'
 
     try:
-        if 'all' in filename.lower():
-            print('full key: ', base_path)
+        if 'all' in filename.lower() or 'questionnaires' in filename.lower():
+            # Change the file extension to .zip
+            filename = filename.rsplit('.', 1)[0] + '.zip'
 
-            full_key = base_path
+            full_key = base_path + '/' + filename
+            print('full key: ', full_key)
             download_url = s3.generate_presigned_url(
                 'get_object',
                 Params={'Bucket': bucket_name, 'Key': full_key},
