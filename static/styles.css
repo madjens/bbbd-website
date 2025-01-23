@@ -66,8 +66,9 @@ body {
 #plot-display {
     background-color: rgb(19, 21, 22);
     border-radius: 8px;
-    padding: 20px;
+    /* padding: 20px; */
     margin-right: 1vw;
+    padding-left: 2vw;
     /* margin-left: 0px; */
     width: 45vw;
     max-height: 1250px;
