@@ -169,7 +169,7 @@ def download_file():
     exp = request.args.get('exp')
     datatype = request.args.get('datatype')
 
-    base_path = f"data/Projects/CUNY_MADSEN/BBBD/matrix_data/{datatype}/{exp}"
+    base_path = f"data/Projects/CUNY_MADSEN/BBBD/matrix_data"
     s3 = boto3.client('s3', config=Config(signature_version=UNSIGNED))
 
     bucket_name = 'fcp-indi'
