@@ -193,7 +193,8 @@ def download_file():
             full_key = base_path + '/' + filename
             response = s3.get_object(Bucket=bucket_name, Key=full_key)
             file_stream = io.BytesIO(response['Body'].read())
-            return send_file(file_stream, as_attachment=True)
+            base_filename = os.path.basename(filename)
+            return send_file(file_stream, as_attachment=True, download_name=base_filename)
 
     except Exception as e:
         print(f"Error: {e}, {full_key}")
