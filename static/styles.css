@@ -53,7 +53,7 @@ body {
     width: 98vw; /* Ensure full width without horizontal scroll */
 }
 
-#plot-display {
+#container-display {
     background-color: rgb(19, 21, 22);
     border-radius: 8px;
     padding: 20px;
@@ -63,12 +63,12 @@ body {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-#container-display {
+#plot-display {
     background-color: rgb(19, 21, 22);
     border-radius: 8px;
     padding: 20px;
-    margin-top: 1vw;
-    margin-right: 1vw;
+    margin: 1vw;
+    margin-left: 0px;
     width: 45vw;
     max-height: 1250px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
