@@ -191,6 +191,7 @@ def download_file():
 
         else:
             full_key = base_path + '/' + filename
+            print('full key: ', full_key)
             response = s3.get_object(Bucket=bucket_name, Key=full_key)
             file_stream = io.BytesIO(response['Body'].read())
             base_filename = os.path.basename(filename)
