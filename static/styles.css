@@ -770,7 +770,7 @@ figure img {
 }
 
 .code-container {
-    flex: 1 1 calc(50% - 20px); /* Make each container take half the space */
+    /* flex: 1 1 calc(50% - 20px); Make each container take half the space */
     background-color: #2c2f33;
     border-radius: 8px;
     padding: 15px;
@@ -779,7 +779,6 @@ figure img {
 }
 
 .code-container h3 {
-    color: #f1c40f;
     margin-bottom: 10px;
 }
 
