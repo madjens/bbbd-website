@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const categories = [
                     { type: 'Subject', items: ['16', '17', '18'], parentDiv: subjectsDiv },
                     { type: 'Session', items: ['01', '02'], parentDiv: sessionsDiv },
-                    { type: 'Stimuli', items: ['01', '02', '03'], parentDiv: stimuliDiv }
+                    { type: 'Stimulus', items: ['01', '02', '03'], parentDiv: stimuliDiv }
                 ];
     
                 // Store initial selections
@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // Function to select a button
     function selectButton(category, selectedValue) {
-        console.log(`Selecting button: ${category.type}, ${category.item}`)
+        // console.log(`Selecting button: ${category.type}, ${category.item}`)
         const button = category.buttons.find(b => b.textContent === selectedValue);
         if (button) {
             button.classList.add('selected');
