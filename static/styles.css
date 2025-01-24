@@ -760,9 +760,7 @@ figure img {
 
 #exp-content-flex {
     display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: space-around;
+    justify-content: space-between;
     gap: 20px;
     background-color: rgb(19, 21, 22);
     border-radius: 8px;
