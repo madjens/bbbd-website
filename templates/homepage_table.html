@@ -16,6 +16,65 @@
     <p style="margin-left: 0px;"> (Download individual or complete experiment data from the "Download" section)</p>
     <div >
         <table id="modalityTable"  style="border-color: black; margin-left: 0px;">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th><u>Experiment 1</u><br>(n=27)</th>
+                    <th><u>Experiment 2</u><br>(n=32)</th>
+                    <th><u>Experiment 3</u><br>(n=29)</th>
+                    <th><u>Experiment 4</u><br>(n=43)</th>
+                    <th><u>Experiment 5</u><br>(n=49)</th>
+                </tr>
+                <tr>
+                    <th>Conditions</th>
+                    <th>Attentive<br>Distracted</th>
+                    <th>Attentive<br>Distracted</th>
+                    <th>Attentive<br>Distracted</th>
+                    <th>Attentive<br>Attentive</th>
+                    <th>Attentive<br>Intervention</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for condition, icon, file_prefix, exclude_experiments in [
+                    ('All Modalities', 'backup_table', 'all', []),
+                    ('Pupil size', 'visibility', 'pupil', []),
+                    ('Gaze position', 'eye_tracking', 'gaze_visualangle', []),
+                    ('Saccades', 'visibility_lock', 'saccades', []),
+                    ('Saccade Rate', 'visibility_lock', 'saccaderate', []),
+                    ('Blinks', 'visibility_off', 'blinks', []),
+                    ('Blink Rate', 'visibility_off', 'blinkrate', []),
+                    ('Fixations', 'preview', 'fixations', []),
+                    ('Fixation Rate', 'preview', 'fixationrate', []),
+                    ('Head Movement', 'face_shake', 'head', []),
+                    ('EEG', 'neurology', 'eeg', [1]),
+                    ('ECG', 'ecg', 'ecg', [1]),
+                    ('Heart Beats', 'favorite', 'rpeaks', [1]),
+                    ('Heart Rate', 'cardiology', 'heartrate', [1]),
+                    ('EOG', 'ophthalmology', 'eog', [1]),
+                    ('Respiration', 'respiratory_rate', 'respiration', [1,2,3]),
+                    ('Breaths', 'pulmonology', 'breathpeaks', [1,2,3]),
+                    ('Breath Rate', 'monitor_heart', 'breathrate', [1,2,3])
+                ] %}
+                <tr data-id="{{ loop.index }}">
+                    <td class="table-clickable">
+                        <b><span class="material-symbols-outlined md-36">{{ icon }}</span><br>{{ condition }}</b>
+                    </td>
+                    {% for experiment_num in range(1, 6) %}
+                    <td>
+                        {% if experiment_num in exclude_experiments %}
+                        <span class="cross" style="color: red;">❌</span>
+                        {% else %}
+                        <b><span class="tick">&#9989</span></b>
+                        {% endif %}
+                    </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <table id="modalityTable"  style="border-color: black; margin-left: 0px;">
             <tr style="background-color: #3f51b5; color: black;">
                 <th></th>
                 <th><u>Exp-1</u><br>(n=27)</th>
