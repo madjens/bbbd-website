@@ -44,13 +44,13 @@ def api_base_url():
     return jsonify(base_url=base_url)
 
 #### Webpages ####
-@app.route('/intervention-dataset')
-def intervention_dataset():
-    return render_template('intervention_dataset.html')
+# @app.route('/intervention-dataset')
+# def intervention_dataset():
+#     return render_template('intervention_dataset.html')
 
-@app.route('/multimodal-dataset')
-def multimodal_dataset():
-    return render_template('multimodal_dataset.html')
+# @app.route('/multimodal-dataset')
+# def multimodal_dataset():
+#     return render_template('multimodal_dataset.html')
 
 @app.route('/download_page')
 def download_page():
@@ -76,21 +76,25 @@ def questionnaires_page():
 def research_page():
     return render_template('research_page.html')
 
-@app.route('/multistyle-dataset')
-def multistyle_dataset():
-    return render_template('multistyle_dataset.html')
+@app.route('/changelog')
+def homepage_table():
+    return render_template('changelog_page.html')
 
-@app.route('/eyetracking-dataset')
-def eyetracking_dataset():
-    return render_template('eyetracking_dataset.html')
+# @app.route('/multistyle-dataset')
+# def multistyle_dataset():
+#     return render_template('multistyle_dataset.html')
+
+# @app.route('/eyetracking-dataset')
+# def eyetracking_dataset():
+#     return render_template('eyetracking_dataset.html')
 
 @app.route('/table')
 def table():
     return render_template('table.html')
 
-@app.route('/table_processed')
-def table_processed():
-    return render_template('table_processed.html')
+# @app.route('/table_processed')
+# def table_processed():
+#     return render_template('table_processed.html')
 
 @app.route('/homepage_table')
 def homepage_table():
