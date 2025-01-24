@@ -790,6 +790,34 @@ figure img {
     color: #bdc3c7;
     margin-bottom: 10px;
 }
+.copy-code-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.3s;
+}
+
+.copy-code-button:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+}
+
+pre {
+    position: relative; /* Required for button positioning */
+    background-color: #1e1e1e;
+    padding: 10px;
+    border-radius: 8px;
+    overflow-x: auto;
+    color: #f8f8f2;
+}
 
 
 #exp-heading h2 {
