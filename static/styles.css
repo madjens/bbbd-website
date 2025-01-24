@@ -829,7 +829,6 @@ pre {
 }
 
 .notebook-item {
-    flex: 1;
     background-color: #2c2f33;
     border-radius: 8px;
     padding: 15px;
@@ -839,14 +838,12 @@ pre {
 
 .notebook-item h4 {
     margin-bottom: 10px;
-    color: #f1c40f;
 }
 
 .notebook-item p {
     font-size: 14px;
     margin-bottom: 15px;
 }
-
 
 #exp-heading h2 {
     margin: 0;

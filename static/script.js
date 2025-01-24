@@ -53,9 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(error => console.error('Error fetching datasets:', error));
 
-
-
-
     // Function to load dataset details and display them
     function loadDatasetDetails(datasetId, button) {
         // Clear previously selected button
@@ -211,8 +208,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const ecgSamplingRate = 128; // Sampling rate for ECG
         const eyeHeadSamplingRate = 128; // Sampling rate for eye and head data
 
-        // Create time arrays based on the respective sampling rates
-        // const ecgTime = ecgValues.map((_, index) => index / ecgSamplingRate);
         const eyeHeadTime = eyeX.map((_, index) => index / eyeHeadSamplingRate); // Use eyeX to determine length
 
         // Create traces for each signal
@@ -409,26 +404,6 @@ document.addEventListener("DOMContentLoaded", () => {
         Plotly.newPlot(htmlcode, traces, layout);
     }
 
-    // // Function to fetch and display the HTML table
-    // function fetchTableHTML() {
-    //     fetch('/table')  // Fetch the HTML file from the Flask route
-    //         .then(response => {
-    //             if (!response.ok) {
-    //                 throw new Error('Network response was not ok');
-    //             }
-    //             return response.text();  // Parse the response as text
-    //         })
-    //         .then(data => {
-    //             datasetTableContainer.innerHTML = data;
-    //             });
-    // }
-
-    // function download_file(filename, subdirectory) {
-    //     console.log(filename);
-    //     alert("Downloading: " + filename);  // Optional: Show an alert for debugging
-    //     window.location.href = '/download/' + subdirectory + '/' + filename;  // Trigger file download
-    // }
-
     function download_file(filename) {
         console.log(filename);
         alert("Downloading: " + filename);  // Optional: Show an alert for debugging
@@ -451,44 +426,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     fetchHomeTableHTML()
-
-
-
-    // document.addEventListener("DOMContentLoaded", function() {
-
-
-
-    // });
-
-    // Function to handle file download
-
-
-
-
-
-    // Search functionality for filtering displayed datasets
-    // const searchInput = document.getElementById('dataset-search'); // Search input field
-
-    // searchInput.addEventListener('input', function() {
-    //     const searchValue = this.value.toLowerCase(); // Get the search input and convert it to lowercase
-    //     const rows = datasetTableContainer.getElementsByTagName('tr'); // Get all rows in the fetched HTML table
-
-    //     // Iterate over each row (skipping the header row)
-    //     for (let i = 1; i < rows.length; i++) {
-    //         const cells = rows[i].getElementsByTagName('td'); // Get all cells in the row
-    //         let rowContainsSearchValue = false; // Flag to track if the row matches the search value
-
-    //         // Check each cell for the search value
-    //         for (let j = 0; j < cells.length; j++) {
-    //             const cellValue = cells[j].textContent.toLowerCase(); // Get the cell value and convert to lowercase
-    //             if (cellValue.includes(searchValue)) { // Check if cell value includes the search value
-    //                 rowContainsSearchValue = true; // Set flag to true if match found
-    //                 break; // Exit the loop if a match is found
-    //             }
-    //         }
-
-    //         // Show or hide the row based on the search result
-    //         rows[i].style.display = rowContainsSearchValue ? '' : 'none';
-    //     }
-    // });
 });

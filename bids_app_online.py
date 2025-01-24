@@ -159,30 +159,30 @@ def download_file():
     bucket_name = 'fcp-indi'
 
     try:
-        if 'all' in filename.lower() or 'questionnaires' in filename.lower():
+        if 'all' in filename.lower():
             # Change the file extension to .zip
             filename = filename.rsplit('.', 1)[0] + '.zip'
-
             full_key = base_path + '/' + filename
-            print('full key: ', full_key)
-            download_url = s3.generate_presigned_url(
-                'get_object',
-                Params={'Bucket': bucket_name, 'Key': full_key},
-                ExpiresIn=3600  # Link valid for 1 hour
-            )
-            print(download_url)
-            return jsonify({'download_url': download_url})
+        
+        elif 'demographics' in filename.lower():
+            filename = f'{exp}_demographics.tsv'
+            full_key = base_path + '/' + filename
 
+        elif 'questionnaires' in filename.lower():
+            filename = f'{exp}_questionnaires.zip'
+            full_key = base_path + '/' + filename
+            
         else:
             full_key = base_path + '/' + filename
-            print('full key: ', full_key)
-            download_url = s3.generate_presigned_url(
-                'get_object',
-                Params={'Bucket': bucket_name, 'Key': full_key},
-                ExpiresIn=3600  # Link valid for 1 hour
-            )
-            print(download_url)
-            return jsonify({'download_url': download_url})
+        
+        print('full key: ', full_key)
+        download_url = s3.generate_presigned_url(
+            'get_object',
+            Params={'Bucket': bucket_name, 'Key': full_key},
+            ExpiresIn=3600  # Link valid for 1 hour
+        )
+        print(download_url)
+        return jsonify({'download_url': download_url})
 
     except Exception as e:
         print(f"Error: {e}, {full_key}")
