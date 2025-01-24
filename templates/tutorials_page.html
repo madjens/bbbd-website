@@ -70,98 +70,100 @@
         <section id="superexp-heading">
             <h2>Tutorials - How to use this dataset</h2>
         </section>
+        <section id="exp-content">
+            <h2>Download Scripts</h2>
+            <p>- Creates a download folder in the current working directory where the zipped dataset is downloaded and extracted.</p>
 
-        <h2>Download Scripts</h2>
-        <p>- Creates a download folder in the current working directory where the zipped dataset is downloaded and extracted.</p>
+            <div class="exp-content-flex">
+                <div class="code-container">
+                    <h3>Python</h3>
+                    <pre>
+                        <code class="language-python">
+                import zipfile
+                import os
+                import requests
+                
+                def bbbd_download_unzip(expno, output_dir, output_file=None):
+                    url = f'https://fcp-indi.s3.amazonaws.com/data/Projects/CUNY_MADSEN/BBBD/bids_data/experiment{expno}.zip'
+                    if output_file is None:
+                        output_file = os.path.join(output_dir, url.split("/")[-1])
+                    os.makedirs(output_dir, exist_ok=True)
+                    
+                    # Download 
+                    print(f"Downloading from {url}...")
+                    response = requests.get(url, stream=True)
+                    if response.status_code == 200:
+                        with open(output_file, 'wb') as file:
+                            for chunk in response.iter_content(chunk_size=8192):
+                                file.write(chunk)
+                        print(f"Download completed: {output_file}")
+                    else:
+                        print(f"Failed to download. Status code: {response.status_code}")
+                        return None
+                    
+                    # Unzip
+                    if zipfile.is_zipfile(output_file):
+                        print(f"Unzipping {output_file}...")
+                        with zipfile.ZipFile(output_file, 'r') as zip_ref:
+                            zip_ref.extractall(output_dir)
+                        print(f"Extracted to: {output_dir}")
+                        os.remove(output_file)
+                    else:
+                        print(f"{output_file} is not a ZIP file, skipping extraction.")
+                    return output_file
 
-        <section id="exp-content-flex">
-            <div class="code-container">
-                <h3>Python</h3>
-                <pre>
-                    <code class="language-python">
-            import zipfile
-            import os
-            import requests
-            
-            def bbbd_download_unzip(expno, output_dir, output_file=None):
-                url = f'https://fcp-indi.s3.amazonaws.com/data/Projects/CUNY_MADSEN/BBBD/bids_data/experiment{expno}.zip'
-                if output_file is None:
-                    output_file = os.path.join(output_dir, url.split("/")[-1])
-                os.makedirs(output_dir, exist_ok=True)
-                
-                # Download 
-                print(f"Downloading from {url}...")
-                response = requests.get(url, stream=True)
-                if response.status_code == 200:
-                    with open(output_file, 'wb') as file:
-                        for chunk in response.iter_content(chunk_size=8192):
-                            file.write(chunk)
-                    print(f"Download completed: {output_file}")
-                else:
-                    print(f"Failed to download. Status code: {response.status_code}")
-                    return None
-                
-                # Unzip
-                if zipfile.is_zipfile(output_file):
-                    print(f"Unzipping {output_file}...")
-                    with zipfile.ZipFile(output_file, 'r') as zip_ref:
-                        zip_ref.extractall(output_dir)
-                    print(f"Extracted to: {output_dir}")
-                    os.remove(output_file)
-                else:
-                    print(f"{output_file} is not a ZIP file, skipping extraction.")
-                return output_file
+                base_dir = r'.\bbbd_datasets' 
+                expnos = [1,2,3,4,5]
+                for expno in expnos:
+                    bbbd_download_unzip(expno, base_dir)
 
-            base_dir = r'.\bbbd_datasets' 
-            expnos = [1,2,3,4,5]
-            for expno in expnos:
-                bbbd_download_unzip(expno, base_dir)
-                    </code>
-                </pre>
-            </div>
-            
-            <div class="code-container">
-                <h3>MATLAB</h3>
-                <pre>
-                    <code class="language-matlab">     
-            base_dir = '.\bbbd_datasets';
-            expnos = [1, 2, 3, 4, 5];
-            for expno = expnos
-                bbbd_download_unzip(expno, base_dir);
-            end
-                        
-            function bbbd_download_unzip(expno, output_dir)
-                url = sprintf('https://fcp-indi.s3.amazonaws.com/data/Projects/CUNY_MADSEN/BBBD/bids_data/experiment%d.zip', expno);
-                output_file = fullfile(output_dir, ['experiment', num2str(expno), '.zip']);
+                        </code>
+                    </pre>
+                </div>
                 
-                % Create output directory if it doesn't exist
-                if ~exist(output_dir, 'dir')
-                    mkdir(output_dir);
+                <div class="code-container">
+                    <h3>MATLAB</h3>
+                    <pre>
+                        <code class="language-matlab">     
+                base_dir = '.\bbbd_datasets';
+                expnos = [1, 2, 3, 4, 5];
+                for expno = expnos
+                    bbbd_download_unzip(expno, base_dir);
                 end
-                
-                % Download the file
-                fprintf('Downloading from %s...\n', url);
-                try
-                    websave(output_file, url);
-                    fprintf('Download completed: %s\n', output_file);
-                catch ME
-                    fprintf('Failed to download. Error: %s\n', ME.message);
-                    return;
+                            
+                function bbbd_download_unzip(expno, output_dir)
+                    url = sprintf('https://fcp-indi.s3.amazonaws.com/data/Projects/CUNY_MADSEN/BBBD/bids_data/experiment%d.zip', expno);
+                    output_file = fullfile(output_dir, ['experiment', num2str(expno), '.zip']);
+                    
+                    % Create output directory if it doesn't exist
+                    if ~exist(output_dir, 'dir')
+                        mkdir(output_dir);
+                    end
+                    
+                    % Download the file
+                    fprintf('Downloading from %s...\n', url);
+                    try
+                        websave(output_file, url);
+                        fprintf('Download completed: %s\n', output_file);
+                    catch ME
+                        fprintf('Failed to download. Error: %s\n', ME.message);
+                        return;
+                    end
+                    
+                    % Unzip the file
+                    if isfile(output_file)
+                        fprintf('Unzipping %s...\n', output_file);
+                        unzip(output_file, output_dir);
+                        fprintf('Extracted to: %s\n', output_dir);
+                        delete(output_file); % Remove the ZIP file
+                    else
+                        fprintf('%s is not a valid ZIP file. Skipping extraction.\n', output_file);
+                    end
                 end
-                
-                % Unzip the file
-                if isfile(output_file)
-                    fprintf('Unzipping %s...\n', output_file);
-                    unzip(output_file, output_dir);
-                    fprintf('Extracted to: %s\n', output_dir);
-                    delete(output_file); % Remove the ZIP file
-                else
-                    fprintf('%s is not a valid ZIP file. Skipping extraction.\n', output_file);
-                end
-            end
-                        <!-- MATLAB code here -->
-                    </code>
-                </pre>
+                            <!-- MATLAB code here -->
+                        </code>
+                    </pre>
+                </div>
             </div>
         </section>
         

@@ -758,21 +758,16 @@ figure img {
     margin-bottom: 10px;
 }
 
-#exp-content-flex {
+.exp-content-flex {
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    background-color: rgb(19, 21, 22);
-    border-radius: 8px;
-    padding: 20px;
-    margin: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    justify-content: space-between; /* Space between Python and MATLAB sections */
+    gap: 20px; /* Space between the containers */
 }
 
 .code-container {
-    /* flex: 1 1 calc(50% - 20px); Make each container take half the space */
     background-color: #2c2f33;
     border-radius: 8px;
+    max-width: 48%;
     padding: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     color: #f8f8f2;
