@@ -105,57 +105,79 @@ document.addEventListener("DOMContentLoaded", () => {
         fetch(`/dataset/${datasetId}`)
             .then(response => response.json())
             .then(dataset => {
-
-                const bidsname = dataset.filename.replace(/\.zip$/, '');
+    
                 const bidsdirname = dataset.bidsname.replace(/\.zip$/, '');
-
-                // Define the sections and items for each category
                 const categories = [
-                    { type: 'Subject', items: ['16', '17', '18'], parentDiv: subjectsDiv, bidsname: bidsdirname },
-                    { type: 'Session', items: ['01', '02'], parentDiv: sessionsDiv, bidsname: bidsdirname },
-                    { type: 'Stimuli', items: ['01', '02', '03'], parentDiv: stimuliDiv, bidsname: bidsdirname }
+                    { type: 'Subject', items: ['16', '17', '18'], parentDiv: subjectsDiv },
+                    { type: 'Session', items: ['01', '02'], parentDiv: sessionsDiv },
+                    { type: 'Stimuli', items: ['01', '02', '03'], parentDiv: stimuliDiv }
                 ];
-
-                // Create all buttons first
+    
+                // Store initial selections
+                const selections = {
+                    bidsname: bidsdirname,
+                    subject: categories[0].items[0],
+                    session: categories[1].items[0],
+                    stimulus: categories[2].items[0]
+                };
+    
+                // Create and select buttons
                 categories.forEach(category => {
-                    createButtons(category);
+                    createButtons(category, selections);
                 });
-
-                // Select the first button for each category by default
-                fetchSignal(bidsdirname, categories[0].items[0], categories[1].items[0], categories[2].items[0])
-            })
+    
+                // Select the first button and highlight it
+                selectButton(categories[0], selections.subject);
+                selectButton(categories[1], selections.session);
+                selectButton(categories[2], selections.stimulus);
+    
+                // Fetch initial signal
+                fetchSignal(selections.bidsname, selections.subject, selections.session, selections.stimulus);
+            });
     }
-
+    
     // Function to create buttons dynamically
-    function createButtons(category) {
+    function createButtons(category, selections) {
         category.parentDiv.innerHTML = `<strong>${category.type}:</strong> `;
         category.buttons = [];
-
+    
         category.items.forEach(item => {
             const button = document.createElement('button');
             button.textContent = item;
-            button.onclick = () => handleSelection(category.type.toLowerCase(), item, category.parentDiv, button);
+            button.onclick = () => handleSelection(category.type.toLowerCase(), item, category.parentDiv, button, selections);
             category.parentDiv.appendChild(button);
             category.buttons.push(button);
         });
     }
-
+    
+    // Function to select a button
+    function selectButton(category, selectedValue) {
+        const button = category.buttons.find(b => b.textContent === selectedValue);
+        if (button) {
+            button.classList.add('selected');
+        }
+    }
+    
     // Function to handle button selection
-    function handleSelection(type, selectedValue, parentDiv, selectedButton) {
+    function handleSelection(type, selectedValue, parentDiv, selectedButton, selections) {
         // Remove highlight from all buttons in the same group
         const allButtons = parentDiv.getElementsByTagName('button');
         for (let btn of allButtons) {
             btn.classList.remove('selected');
         }
         selectedButton.classList.add('selected');
-
+    
+        // Update selections with the new value
         selections[type] = selectedValue;
         console.log(`Selected ${type}: ${selectedValue}`);
-
+    
+        // Fetch the signal with the updated selection
         fetchSignal(selections.bidsname, selections.subject, selections.session, selections.stimulus);
     }
-
-    async function fetchSignal(bidsname, sub, ses, stim) {
+    
+    // Placeholder for the signal fetching function
+    async function fetchSignal(bidsname, sub, ses, stim){
+        console.log(`Fetching signal for: ${bidsname}, Subject: ${sub}, Session: ${ses}, Stimulus: ${stim}`);
         const signalPath = `${bidsname}/${sub}/${ses}/${stim}`;
         const loadingElement = document.getElementById('loading');
 
