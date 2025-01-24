@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
         selections[type] = selectedValue;
         console.log(`Selected ${type}: ${selectedValue}`);
         fetchSignal(selections.bidsname, selections.subject, selections.session, selections.stimulus);
-        console.log(`Fetched signal for: ${bidsname}, Subject: ${sub}, Session: ${ses}, Stimulus: ${stim}`);
+        console.log(`Fetched signal for: ${selections.bidsname}, Subject: ${selections.subject}, Session: ${selections.session}, Stimulus: ${selections.stimulus}`);
     }    
     
     async function fetchSignal(bidsname, sub, ses, stim){
