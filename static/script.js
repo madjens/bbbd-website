@@ -111,9 +111,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 // Define the sections and items for each category
                 const categories = [
-                    { type: 'Subject', items: ['16', '17', '18'], parentDiv: subjectsDiv },
-                    { type: 'Session', items: ['01', '02'], parentDiv: sessionsDiv },
-                    { type: 'Stimuli', items: ['01', '02', '03'], parentDiv: stimuliDiv }
+                    { type: 'Subject', items: ['16', '17', '18'], parentDiv: subjectsDiv, bidsname: bidsdirname },
+                    { type: 'Session', items: ['01', '02'], parentDiv: sessionsDiv, bidsname: bidsdirname },
+                    { type: 'Stimuli', items: ['01', '02', '03'], parentDiv: stimuliDiv, bidsname: bidsdirname }
                 ];
 
                 // Create all buttons first
