@@ -17,7 +17,7 @@ body {
     width: 90%;
     max-width: 100%;
     margin-right: 0.5vw;
-    max-height: 1000px; /* Adjust the height as needed */
+    /* max-height: 1000px; Adjust the height as needed */
 }
 /* Container for content sections */
 .container {
@@ -60,17 +60,6 @@ body {
     margin-left: 1vw;
     width: 45vw;
     /* max-height: 1250px; */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-#homecontainer-display {
-    background-color: rgb(19, 21, 22);
-    border-radius: 8px;
-    padding: 20px;
-    margin-left: 1vw;
-    width: 45vw;
-    display: block;
-    max-height: 90vw;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
