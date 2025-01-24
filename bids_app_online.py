@@ -77,7 +77,7 @@ def research_page():
     return render_template('research_page.html')
 
 @app.route('/changelog')
-def homepage_table():
+def changelog_page():
     return render_template('changelog_page.html')
 
 # @app.route('/multistyle-dataset')
