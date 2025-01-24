@@ -176,16 +176,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    function copyToClipboard(button) {
-        const codeBlock = button.nextElementSibling; // Get the <code> element
-        const text = codeBlock.textContent; // Extract the text content
-        navigator.clipboard.writeText(text).then(() => {
-            // Provide feedback on successful copy
-            button.textContent = "Copied!";
-            setTimeout(() => {
-                button.textContent = "Copy";
-            }, 1500);
-        });
-    }
+    
     
 });
