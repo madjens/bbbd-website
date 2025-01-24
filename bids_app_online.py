@@ -192,10 +192,6 @@ def download_file():
         else:
             full_key = base_path + '/' + filename
             print('full key: ', full_key)
-            # response = s3.get_object(Bucket=bucket_name, Key=full_key)
-            # file_stream = io.BytesIO(response['Body'].read())
-            # base_filename = os.path.basename(filename)
-            # return send_file(file_stream, as_attachment=True, download_name=base_filename)
             download_url = s3.generate_presigned_url(
                 'get_object',
                 Params={'Bucket': bucket_name, 'Key': full_key},

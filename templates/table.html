@@ -39,6 +39,8 @@
                         <tbody>
                             {% for condition, icon, file_prefix, exclude_experiments in [
                                 ('All Modalities', 'backup_table', 'all', []),
+                                ('Demographics', 'demography', 'participants', []),
+                                ('Questionnaires', 'poll', 'questionnaires', []),
                                 ('Pupil size', 'visibility', 'pupil', []),
                                 ('Gaze position', 'eye_tracking', 'gaze_visualangle', []),
                                 ('Saccades', 'visibility_lock', 'saccades', []),
@@ -48,8 +50,7 @@
                                 ('EOG', 'ophthalmology', 'eog', [1]),
                                 ('ECG', 'monitor_heart', 'ecg', [1]),
                                 ('EEG', 'neurology', 'eeg', [1]),
-                                ('Head Movement', 'face_shake', 'head', []),
-                                ('Questionnaires', 'poll', 'questionnaires', [])
+                                ('Head Movement', 'face_shake', 'head', [])
                             ] %}
                             <tr data-id="{{ loop.index }}">
                                 <td class="table-clickable">
@@ -118,8 +119,7 @@
                                 ('ECG', 'monitor_heart', 'ecg', [1]),
                                 ('Heart Rate', 'monitor_heart', 'heartrate', [1]),
                                 ('EEG', 'neurology', 'eeg', [1]),
-                                ('Head Movement', 'face_shake', 'head', []),
-                                ('Questionnaires', 'poll', 'questionnaires', [])
+                                ('Head Movement', 'face_shake', 'head', [])
                             ] %}
                             <tr data-id="{{ loop.index }}">
                                 <td class="table-clickable">
