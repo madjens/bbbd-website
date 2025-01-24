@@ -758,6 +758,46 @@ figure img {
     margin-bottom: 10px;
 }
 
+#exp-content-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    background-color: rgb(19, 21, 22);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.code-container {
+    flex: 1 1 calc(50% - 20px); /* Make each container take half the space */
+    background-color: #2c2f33;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    color: #f8f8f2;
+}
+
+.code-container h3 {
+    color: #f1c40f;
+    margin-bottom: 10px;
+}
+
+.code-container pre {
+    background-color: #1e1e1e;
+    padding: 10px;
+    border-radius: 8px;
+    overflow-x: auto;
+    color: #f8f8f2;
+}
+
+.code-container p {
+    font-size: 14px;
+    color: #bdc3c7;
+    margin-bottom: 10px;
+}
+
+
 #exp-heading h2 {
     margin: 0;
 }
