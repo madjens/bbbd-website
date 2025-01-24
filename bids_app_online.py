@@ -44,14 +44,6 @@ def api_base_url():
     return jsonify(base_url=base_url)
 
 #### Webpages ####
-# @app.route('/intervention-dataset')
-# def intervention_dataset():
-#     return render_template('intervention_dataset.html')
-
-# @app.route('/multimodal-dataset')
-# def multimodal_dataset():
-#     return render_template('multimodal_dataset.html')
-
 @app.route('/download_page')
 def download_page():
     return render_template('download_page.html')
@@ -80,22 +72,9 @@ def research_page():
 def changelog_page():
     return render_template('changelog_page.html')
 
-
-# @app.route('/multistyle-dataset')
-# def multistyle_dataset():
-#     return render_template('multistyle_dataset.html')
-
-# @app.route('/eyetracking-dataset')
-# def eyetracking_dataset():
-#     return render_template('eyetracking_dataset.html')
-
 @app.route('/table')
 def table():
     return render_template('table.html')
-
-# @app.route('/table_processed')
-# def table_processed():
-#     return render_template('table_processed.html')
 
 @app.route('/homepage_table')
 def homepage_table():
@@ -209,12 +188,6 @@ def download_file():
         print(f"Error: {e}, {full_key}")
         return "Internal Server Error", 500
 
-# @app.route('/progress/<exp_name>', methods=['GET'])
-# def get_progress(exp_name):
-#     if exp_name not in progress:
-#         return jsonify({'error': f'No progress found for {exp_name}'}), 404
-#     return jsonify(progress[exp_name])
-
 ##############################
 #### Signal Visualisation ####
 ##############################
@@ -255,7 +228,7 @@ def read_gzip_data(url, data_container, signal_type):
 
 @app.route('/plot/<string:bidsname>/<string:sub>/<string:ses>/<string:stim>')
 def load_signal(bidsname, sub, ses, stim):
-    print(f"Received sub: {sub}, ses: {ses}, stim: {stim}")
+    print(f"Received bidname: {bidsname}, sub: {sub}, ses: {ses}, stim: {stim}")
 
     raw_ecg_path = 'https://fcp-indi.s3.amazonaws.com/' + prefix_s3 + f'/plot_data_website/{bidsname}/sub-{sub}/ses-{ses}/beh/sub-{sub}_ses-{ses}_task-stim{stim}_recording-ecg_physio.tsv.gz'
     raw_gaze_path = 'https://fcp-indi.s3.amazonaws.com/' + prefix_s3 + f'/plot_data_website/{bidsname}/sub-{sub}/ses-{ses}/eyetrack/sub-{sub}_ses-{ses}_task-stim{stim}_gaze_eyetrack.tsv.gz'

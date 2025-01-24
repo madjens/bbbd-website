@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
 
                 // Select the first button for each category by default
-                selectDefaultButtons(categories, bidsdirname);
+                fetchSignal(bidsdirname, categories[0].items[0], categories[1].items[0], categories[2].items[0])
             })
     }
 
@@ -147,111 +147,13 @@ document.addEventListener("DOMContentLoaded", () => {
         for (let btn of allButtons) {
             btn.classList.remove('selected');
         }
-
-        // Highlight the selected button
         selectedButton.classList.add('selected');
 
-        // Store the selection in the global `selections` object
         selections[type] = selectedValue;
         console.log(`Selected ${type}: ${selectedValue}`);
 
-        // Fetch the signal based on the current selections
         fetchSignal(selections.bidsname, selections.subject, selections.session, selections.stimulus);
     }
-
-    // Function to select the first button for each category by default
-    function selectDefaultButtons(categories, bidsdirname) {
-        categories.forEach(category => {
-            if (category.buttons.length > 0) {
-                handleSelection(category.type.toLowerCase(), category.items[0], category.parentDiv, category.buttons[0]);
-            }
-        });
-    }
-
-
-    // loadDatasetSignals(5);
-    // // Function to load dataset details and display them
-    // function loadDatasetSignals(datasetId) {
-    //     // Fetch details for the selected dataset
-    //     fetch(`/dataset/${datasetId}`)
-    //         .then(response => response.json())
-    //         .then(dataset => {
-
-    //             const bidsname = dataset.filename.replace(/\.zip$/, '');
-    //             const bidsdirname = dataset.bidsname.replace(/\.zip$/, '');
-
-    //             // Static Subjects
-    //             const subjects = ['16', '17', '18'];
-    //             // const subjects = ['04', '05', '06'];
-    //             subjectsDiv.innerHTML = '<strong>Subject:</strong> ';
-    //             const subjectButtons = [];
-    //             subjects.forEach(subject => {
-    //                 const button = document.createElement('button');
-    //                 button.textContent = subject;
-    //                 button.onclick = () => handleSelection('subject', subject, subjectsDiv, button, bidsdirname);
-    //                 subjectsDiv.appendChild(button);
-    //                 subjectButtons.push(button);
-    //                 // Select the first subject by default
-    //                 // if (index === 0) button.click();
-    //             });
-    //             if (subjectButtons.length > 0) {
-    //                 handleSelection('subject', subjects[0], subjectsDiv, subjectButtons[0], bidsdirname);
-    //             }
-
-    //             // Static Sessions
-    //             const sessions = ['01', '02'];
-    //             sessionsDiv.innerHTML = '<strong>Session:</strong> ';
-    //             const sessionButtons = [];
-    //             sessions.forEach(session => {
-    //                 const button = document.createElement('button');
-    //                 button.textContent = session;
-    //                 button.onclick = () => handleSelection('session', session, sessionsDiv, button, bidsdirname);
-    //                 sessionsDiv.appendChild(button);
-    //                 // Select the first subject by default
-    //                 // if (index === 0) button.click();
-    //                 sessionButtons.push(button);
-    //             });
-    //             if (sessionButtons.length > 0) {
-    //                 handleSelection('session', sessions[0], sessionsDiv, sessionButtons[0], bidsdirname);
-    //             }
-
-    //             // Static Stimuli
-    //             const stimuli = ['01', '02', '03'];
-    //             stimuliDiv.innerHTML = '<strong>Stimuli:</strong> ';
-    //             const stimuliButtons = [];
-    //             stimuli.forEach(stimulus => {
-    //                 const button = document.createElement('button');
-    //                 button.textContent = stimulus;
-    //                 button.onclick = () => handleSelection('stimulus', stimulus, stimuliDiv, button, bidsdirname);
-    //                 stimuliDiv.appendChild(button);
-    //                 // Select the first subject by default
-    //                 // if (index === 0) button.click();
-    //                 stimuliButtons.push(button);
-    //             });
-    //             if (stimuliButtons.length > 0) {
-    //                 handleSelection('stimulus', stimuli[0], stimuliDiv, stimuliButtons[0], bidsdirname);
-    //             }
-
-    //             // Function to handle button selection
-    //             function handleSelection(type, selectedValue, parentDiv, selectedButton, bidsname) {
-    //                 // Remove highlight from all buttons in the same group
-    //                 const allButtons = parentDiv.getElementsByTagName('button');
-    //                 for (let btn of allButtons) {
-    //                     btn.classList.remove('selected');
-    //                 }
-    //                 // Highlight the selected button
-    //                 selectedButton.classList.add('selected');
-
-    //                 // You can add logic here to do something with the selection
-    //                 console.log(`Selected: ${selectedButton.textContent}`);
-
-    //                 selections[type] = selectedValue;
-    //                 console.log(selections);
-
-    //                 fetchSignal(bidsname, selections.subject,selections.session,selections.stimulus);
-    //             }
-    //         })
-    // }
 
     async function fetchSignal(bidsname, sub, ses, stim) {
         const signalPath = `${bidsname}/${sub}/${ses}/${stim}`;
