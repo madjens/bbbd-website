@@ -55,6 +55,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 button.addEventListener('click', () => loadDatasetDetails(dataset.id, button));
                 datasetList?.appendChild(button);
 
+                // Auto-select the button with dataset.id = 1
+                if (dataset.id === 1) {
+                    button.click(); // Simulate a click on the button with id = 1
+                }
+
                 });
         })
         .catch(error => console.error('Error fetching datasets:', error));
