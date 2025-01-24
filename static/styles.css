@@ -63,6 +63,16 @@ body {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+#homecontainer-display {
+    background-color: rgb(19, 21, 22);
+    border-radius: 8px;
+    padding: 20px;
+    margin-left: 1vw;
+    width: 45vw;
+    display: block;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
 #plot-display {
     background-color: rgb(19, 21, 22);
     border-radius: 8px;
