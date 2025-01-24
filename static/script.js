@@ -170,6 +170,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // Update selections with the new value
         selections[type] = selectedValue;
         console.log(`Selected ${type}: ${selectedValue}`);
+        if (type === 'stimulus') {
+            selections.stimulus = selectedValue;
+        }    
     
         // Fetch the signal with the updated selection
         fetchSignal(selections.bidsname, selections.subject, selections.session, selections.stimulus);
