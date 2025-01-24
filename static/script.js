@@ -145,6 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // Function to select a button
     function selectButton(category, selectedValue) {
+        console.log(`Selecting button: ${category.type}, ${category.item}`)
         const button = category.buttons.find(b => b.textContent === selectedValue);
         if (button) {
             button.classList.add('selected');
