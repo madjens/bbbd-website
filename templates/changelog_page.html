@@ -12,63 +12,6 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 
-<script>
-    // Accordion functionality
-    var accordions = document.getElementsByClassName("accordion");
-
-    for (var i = 0; i < accordions.length; i++) {
-        accordions[i].addEventListener("click", function() {
-            // Toggle the panel open/close
-            var panel = this.nextElementSibling;
-            panel.style.display = panel.style.display === "block" ? "none" : "block";
-        });
-    }
-</script>
-
-<style>
-    /* Accordion container styling */
-    .accordion-container {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .accordion {
-        background-color: #f1f1f1;
-        color: #444;
-        cursor: pointer;
-        padding: 12px;
-        width: 100%;
-        text-align: left;
-        border: none;
-        outline: none;
-        font-size: 18px;
-        transition: 0.3s;
-    }
-
-    .accordion:hover {
-        background-color: #ddd;
-    }
-
-    .panel {
-        padding: 10px;
-        background-color: #f9f9f9;
-        display: none;
-        overflow: hidden;
-        border-left: 3px solid #ddd;
-    }
-
-    /* Style for the changelog list */
-    .panel ul {
-        list-style-type: none;
-        padding-left: 20px;
-    }
-
-    .panel ul li {
-        margin-bottom: 10px;
-    }
-</style>
-
 <body>
     <header style="
     color: #f8f0f0;
@@ -122,48 +65,28 @@
     </header>
 
     <main>
-        <section id="changelog">
-            <h3>Changelog</h3>
-            
-            <div class="accordion-container">
-                <!-- Changelog Version 1.0.0 -->
-                <div class="accordion-item">
-                    <button class="accordion">v1.0.0 - 2025-01-01</button>
-                    <div class="panel">
+        <section id="superexp-heading">
+            <h2>The Brain, Body, and Behaviour Dataset: Changelog</h2>
+        </section>
+        
+        <section id="exp-content" style="margin-left: 1vw;">
+            <h1>2025</h1>
+            <ul>
+                    <!-- Add new versions in this space -->
+
+                    <li><strong>v1.0.0</strong>
+                        <p>Release Date: 01/27/25</p>
                         <ul>
                             <li>Initial release of the dataset.</li>
                             <li>Included signals from all subjects across five experiments.</li>
                             <li>Standardized file formats (BIDS-compliant).</li>
+                            <li>Individual modalities released in .mat file formats.</li>
                         </ul>
-                    </div>
-                </div>
-        
-                <!-- Changelog Version 1.1.0 -->
-                <div class="accordion-item">
-                    <button class="accordion">v1.1.0 - 2025-01-15</button>
-                    <div class="panel">
-                        <ul>
-                            <li>Added additional metadata fields to EEG files.</li>
-                            <li>Improved signal quality in experiment 2 dataset.</li>
-                            <li>Updated documentation and usage examples.</li>
-                        </ul>
-                    </div>
-                </div>
-        
-                <!-- Changelog Version 1.2.0 -->
-                <div class="accordion-item">
-                    <button class="accordion">v1.2.0 - 2025-01-22</button>
-                    <div class="panel">
-                        <ul>
-                            <li>Fixed bug with missing stimuli data in experiment 3.</li>
-                            <li>Improved format for EEG files (added channels metadata).</li>
-                            <li>Improved overall dataset compatibility with analysis tools.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+                    </li>
+
+                </li>
+            </ul>
         </section>
-        
     </main>
 
     <footer>
