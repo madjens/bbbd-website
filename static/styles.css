@@ -713,6 +713,19 @@ footer div {
     line-height: 1.5;
 }
 
+figure {
+    margin: 0;
+    border-radius: 15px; /* Rounded corners for the figure */
+    overflow: hidden; /* Ensures content inside follows the rounded edges */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Optional shadow for better aesthetics */
+}
+
+figure img {
+    width: 100%; /* Ensures the image fits inside the rounded figure */
+    height: auto;
+    display: block; /* Removes any inline spacing around the image */
+}
+
 #subexp-content {
     background-color: rgb(19, 21, 22);
     border-radius: 8px;
