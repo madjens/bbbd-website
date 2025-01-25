@@ -139,71 +139,52 @@
                     </p>
 
                     <h2 style="margin-left: 0px;"><u>Modality Matrix</u></h2>
-                    <table style="margin-left: 0px;">
-                        <tr>
-                            <th><u>Experiment 1</u></th>
-                            <td><b><span class="material-symbols-outlined md-36">visibility</span><br>Pupil size</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">eye_tracking</span><br>Gaze position</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">visibility_lock</span><br>Saccades</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">visibility_off</span><br>Blinks</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">respiratory_rate</span><br>Respiration</b></td>
-                            <td><b><span class="material-icons md-36">monitor_heart</span><br>ECG / HR</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">neurology</span><br>EEG</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">face_shake</span><br>Head Movement</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">eda</span><br>EDA</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">poll</span><br>Questionnaires</b></td>
-                        </tr>
-                        <tr>
-                            <th><u>Conditions:</u>
-                                <br>Attentive/Distracted
-                                </th>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_pupil')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_gaze')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_saccades')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_blinks')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="cross" style="color: red;">❌</span></b>
-                            </td>
-                            <td>
-                                <b><span class="cross" style="color: red;">❌</span></b>
-                            </td>
-                            <td>
-                                <b><span class="cross" style="color: red;">❌</span></b>
-                            </td>
-                            <td>
-                                <b><span class="cross" style="color: red;">❌</span></b>
-                            </td>
-                            <td>
-                                <b><span class="cross" style="color: red;">❌</span></b>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment2_questionnaires')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                        </tr>
-                    </table>
+                    <table id="experiment1Table" style="margin-left: 0px;">
+                        <thead>
+                            <tr>
+                                <th>Conditions</th>
+                                <th>Attentive<br>Distracted</th>
+                            </tr>
+                        </thead>
+                    
+                        <tbody>
+                            {% for condition, icon, file_prefix, exclude_experiments in [
+                                ('All Modalities', 'backup_table', 'all', []),
+                                ('Pupil size', 'visibility', 'pupil', []),
+                                ('Gaze position', 'eye_tracking', 'gaze_visualangle', []),
+                                ('Saccades', 'visibility_lock', 'saccades', []),
+                                ('Saccade Rate', 'visibility_lock', 'saccaderate', []),
+                                ('Blinks', 'visibility_off', 'blinks', []),
+                                ('Blink Rate', 'visibility_off', 'blinkrate', []),
+                                ('Fixations', 'preview', 'fixations', []),
+                                ('Fixation Rate', 'preview', 'fixationrate', []),
+                                ('Head Movement', 'face_shake', 'head', []),
+                                ('EEG', 'neurology', 'eeg', [1]),
+                                ('ECG', 'ecg', 'ecg', [1]),
+                                ('Heart Beats', 'favorite', 'rpeaks', [1]),
+                                ('Heart Rate', 'cardiology', 'heartrate', [1]),
+                                ('EOG', 'ophthalmology', 'eog', [1]),
+                                ('Respiration', 'respiratory_rate', 'respiration', [1,2,3]),
+                                ('Breaths', 'pulmonology', 'breathpeaks', [1,2,3]),
+                                ('Breath Rate', 'monitor_heart', 'breathrate', [1,2,3])
+                            ] %}
+                            <tr data-id="{{ loop.index }}">
+                                <td class="table-clickable">
+                                    <b><span class="material-symbols-outlined md-36">{{ icon }}</span><br>{{ condition }}</b>
+                                </td>
+                                <td>
+                                    {% if 1 in exclude_experiments %}
+                                    <span class="cross" style="color: red;">❌</span>
+                                    {% else %}
+                                    <button class="button download-btn" data-filename="processed/experiment1/processed_experiment1_{{ file_prefix }}.mat" aria-label="Download processed {{ condition }} data for Experiment 1">
+                                        <b><span class="material-symbols-outlined icon">download</span></b>
+                                    </button>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>                    
                     </section>
             </div>
 
@@ -256,80 +237,53 @@
                     </p>
 
                     <h2 style="margin-left: 0px;"><u>Download Raw Data</u></h2>
-                    <table style="margin-left: 0px;">
-                        <tr>
-                            <th><u>Experiment 2</u></th>
-                            <td><b><span class="material-symbols-outlined md-36">visibility</span><br>Pupil size</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">eye_tracking</span><br>Gaze position</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">visibility_lock</span><br>Saccades</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">visibility_off</span><br>Blinks</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">respiratory_rate</span><br>Respiration</b></td>
-                            <td><b><span class="material-icons md-36">monitor_heart</span><br>ECG / HR</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">neurology</span><br>EEG</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">face_shake</span><br>Head Movement</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">eda</span><br>EDA</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">poll</span><br>Questionnaires</b></td>
-                        </tr>
-                        <tr>
-                            <th><u>Conditions:</u>
-                            <br>Attentive/Distracted
-                            </th>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_pupil')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_gaze')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_saccades')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_blinks')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="cross" style="color: red;">❌</span></b>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_pupil')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_pupil')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_blinks')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="cross" style="color: red;">❌</span></b>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment2_questionnaires')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                        </tr>
+                    <table id="experiment1Table" style="margin-left: 0px;">
+                        <thead>
+                            <tr>
+                                <th>Conditions</th>
+                                <th>Attentive<br>Distracted</th>
+                            </tr>
+                        </thead>
+                    
+                        <tbody>
+                            {% for condition, icon, file_prefix, exclude_experiments in [
+                                ('All Modalities', 'backup_table', 'all', []),
+                                ('Pupil size', 'visibility', 'pupil', []),
+                                ('Gaze position', 'eye_tracking', 'gaze_visualangle', []),
+                                ('Saccades', 'visibility_lock', 'saccades', []),
+                                ('Saccade Rate', 'visibility_lock', 'saccaderate', []),
+                                ('Blinks', 'visibility_off', 'blinks', []),
+                                ('Blink Rate', 'visibility_off', 'blinkrate', []),
+                                ('Fixations', 'preview', 'fixations', []),
+                                ('Fixation Rate', 'preview', 'fixationrate', []),
+                                ('Head Movement', 'face_shake', 'head', []),
+                                ('EEG', 'neurology', 'eeg', [1]),
+                                ('ECG', 'ecg', 'ecg', [1]),
+                                ('Heart Beats', 'favorite', 'rpeaks', [1]),
+                                ('Heart Rate', 'cardiology', 'heartrate', [1]),
+                                ('EOG', 'ophthalmology', 'eog', [1]),
+                                ('Respiration', 'respiratory_rate', 'respiration', [1,2,3]),
+                                ('Breaths', 'pulmonology', 'breathpeaks', [1,2,3]),
+                                ('Breath Rate', 'monitor_heart', 'breathrate', [1,2,3])
+                            ] %}
+                            <tr data-id="{{ loop.index }}">
+                                <td class="table-clickable">
+                                    <b><span class="material-symbols-outlined md-36">{{ icon }}</span><br>{{ condition }}</b>
+                                </td>
+                                <td>
+                                    {% if 2 in exclude_experiments %}
+                                    <span class="cross" style="color: red;">❌</span>
+                                    {% else %}
+                                    <button class="button download-btn" data-filename="processed/experiment2/processed_experiment2_{{ file_prefix }}.mat" aria-label="Download processed {{ condition }} data for Experiment 1">
+                                        <b><span class="material-symbols-outlined icon">download</span></b>
+                                    </button>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
                     </table>
+                    
                 </section>
             </div>
 
@@ -384,80 +338,53 @@
                     </p>
 
                     <h2 style="margin-left: 0px;"><u>Download Raw Data</u></h2>
-                    <table style="margin-left: 0px;">
-                        <tr>
-                            <th><u>Experiment 3</u></th>
-                            <td><b><span class="material-symbols-outlined md-36">visibility</span><br>Pupil size</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">eye_tracking</span><br>Gaze position</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">visibility_lock</span><br>Saccades</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">visibility_off</span><br>Blinks</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">respiratory_rate</span><br>Respiration</b></td>
-                            <td><b><span class="material-icons md-36">monitor_heart</span><br>ECG / HR</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">neurology</span><br>EEG</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">face_shake</span><br>Head Movement</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">eda</span><br>EDA</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">poll</span><br>Questionnaires</b></td>
-                        </tr>
-                        <tr>
-                            <th><u>Conditions:</u>
-                                <br>Attentive/Distracted
-                                </th>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_pupil')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_gaze')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_saccades')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_blinks')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_pupil')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_pupil')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_pupil')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="cross" style="color: red;">❌</span></b>
-                            </td>
-                            <td>
-                                <b><span class="cross" style="color: red;">❌</span></b>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment2_questionnaires')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                        </tr>
+                    <table id="experiment1Table" style="margin-left: 0px;">
+                        <thead>
+                            <tr>
+                                <th>Conditions</th>
+                                <th>Attentive<br>Distracted</th>
+                            </tr>
+                        </thead>
+                    
+                        <tbody>
+                            {% for condition, icon, file_prefix, exclude_experiments in [
+                                ('All Modalities', 'backup_table', 'all', []),
+                                ('Pupil size', 'visibility', 'pupil', []),
+                                ('Gaze position', 'eye_tracking', 'gaze_visualangle', []),
+                                ('Saccades', 'visibility_lock', 'saccades', []),
+                                ('Saccade Rate', 'visibility_lock', 'saccaderate', []),
+                                ('Blinks', 'visibility_off', 'blinks', []),
+                                ('Blink Rate', 'visibility_off', 'blinkrate', []),
+                                ('Fixations', 'preview', 'fixations', []),
+                                ('Fixation Rate', 'preview', 'fixationrate', []),
+                                ('Head Movement', 'face_shake', 'head', []),
+                                ('EEG', 'neurology', 'eeg', [1]),
+                                ('ECG', 'ecg', 'ecg', [1]),
+                                ('Heart Beats', 'favorite', 'rpeaks', [1]),
+                                ('Heart Rate', 'cardiology', 'heartrate', [1]),
+                                ('EOG', 'ophthalmology', 'eog', [1]),
+                                ('Respiration', 'respiratory_rate', 'respiration', [1,2,3]),
+                                ('Breaths', 'pulmonology', 'breathpeaks', [1,2,3]),
+                                ('Breath Rate', 'monitor_heart', 'breathrate', [1,2,3])
+                            ] %}
+                            <tr data-id="{{ loop.index }}">
+                                <td class="table-clickable">
+                                    <b><span class="material-symbols-outlined md-36">{{ icon }}</span><br>{{ condition }}</b>
+                                </td>
+                                <td>
+                                    {% if 3 in exclude_experiments %}
+                                    <span class="cross" style="color: red;">❌</span>
+                                    {% else %}
+                                    <button class="button download-btn" data-filename="processed/experiment3/processed_experiment3_{{ file_prefix }}.mat" aria-label="Download processed {{ condition }} data for Experiment 1">
+                                        <b><span class="material-symbols-outlined icon">download</span></b>
+                                    </button>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
                     </table>
+                    
                 </section>
 
             </div>
@@ -510,80 +437,53 @@
                     </p>
 
                     <h2 style="margin-left: 0px;"><u>Download Raw Data</u></h2>
-                    <table style="margin-left: 0px;">
-                        <tr>
-                            <th><u>Experiment 3</u></th>
-                            <td><b><span class="material-symbols-outlined md-36">visibility</span><br>Pupil size</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">eye_tracking</span><br>Gaze position</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">visibility_lock</span><br>Saccades</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">visibility_off</span><br>Blinks</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">respiratory_rate</span><br>Respiration</b></td>
-                            <td><b><span class="material-icons md-36">monitor_heart</span><br>ECG / HR</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">neurology</span><br>EEG</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">face_shake</span><br>Head Movement</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">eda</span><br>EDA</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">poll</span><br>Questionnaires</b></td>
-                        </tr>
-                        <tr>
-                            <th><u>Conditions:</u>
-                                <br>Attentive/Distracted
-                                </th>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_pupil')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_gaze')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_saccades')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_blinks')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_pupil')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_pupil')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_pupil')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="cross" style="color: red;">❌</span></b>
-                            </td>
-                            <td>
-                                <b><span class="cross" style="color: red;">❌</span></b>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment2_questionnaires')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                        </tr>
+                    <table id="experiment1Table" style="margin-left: 0px;">
+                        <thead>
+                            <tr>
+                                <th>Conditions</th>
+                                <th>Attentive<br>Distracted</th>
+                            </tr>
+                        </thead>
+                    
+                        <tbody>
+                            {% for condition, icon, file_prefix, exclude_experiments in [
+                                ('All Modalities', 'backup_table', 'all', []),
+                                ('Pupil size', 'visibility', 'pupil', []),
+                                ('Gaze position', 'eye_tracking', 'gaze_visualangle', []),
+                                ('Saccades', 'visibility_lock', 'saccades', []),
+                                ('Saccade Rate', 'visibility_lock', 'saccaderate', []),
+                                ('Blinks', 'visibility_off', 'blinks', []),
+                                ('Blink Rate', 'visibility_off', 'blinkrate', []),
+                                ('Fixations', 'preview', 'fixations', []),
+                                ('Fixation Rate', 'preview', 'fixationrate', []),
+                                ('Head Movement', 'face_shake', 'head', []),
+                                ('EEG', 'neurology', 'eeg', [1]),
+                                ('ECG', 'ecg', 'ecg', [1]),
+                                ('Heart Beats', 'favorite', 'rpeaks', [1]),
+                                ('Heart Rate', 'cardiology', 'heartrate', [1]),
+                                ('EOG', 'ophthalmology', 'eog', [1]),
+                                ('Respiration', 'respiratory_rate', 'respiration', [1,2,3]),
+                                ('Breaths', 'pulmonology', 'breathpeaks', [1,2,3]),
+                                ('Breath Rate', 'monitor_heart', 'breathrate', [1,2,3])
+                            ] %}
+                            <tr data-id="{{ loop.index }}">
+                                <td class="table-clickable">
+                                    <b><span class="material-symbols-outlined md-36">{{ icon }}</span><br>{{ condition }}</b>
+                                </td>
+                                <td>
+                                    {% if 4 in exclude_experiments %}
+                                    <span class="cross" style="color: red;">❌</span>
+                                    {% else %}
+                                    <button class="button download-btn" data-filename="processed/experiment4/processed_experiment4_{{ file_prefix }}.mat" aria-label="Download processed {{ condition }} data for Experiment 1">
+                                        <b><span class="material-symbols-outlined icon">download</span></b>
+                                    </button>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
                     </table>
+                    
 
             </div>
             <div id="exp5" class="experiment-content" style="display:none;">
@@ -633,80 +533,53 @@
                     </p>
 
                     <h2 style="margin-left: 0px;"><u>Download Raw Data</u></h2>
-                    <table style="margin-left: 0px;">
-                        <tr>
-                            <th><u>Experiment 3</u></th>
-                            <td><b><span class="material-symbols-outlined md-36">visibility</span><br>Pupil size</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">eye_tracking</span><br>Gaze position</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">visibility_lock</span><br>Saccades</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">visibility_off</span><br>Blinks</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">respiratory_rate</span><br>Respiration</b></td>
-                            <td><b><span class="material-icons md-36">monitor_heart</span><br>ECG / HR</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">neurology</span><br>EEG</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">face_shake</span><br>Head Movement</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">eda</span><br>EDA</b></td>
-                            <td><b><span class="material-symbols-outlined md-36">poll</span><br>Questionnaires</b></td>
-                        </tr>
-                        <tr>
-                            <th><u>Conditions:</u>
-                                <br>Attentive/Distracted
-                                </th>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_pupil')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_gaze')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_saccades')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_blinks')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_pupil')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_pupil')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment1_pupil')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                            <td>
-                                <b><span class="cross" style="color: red;">❌</span></b>
-                            </td>
-                            <td>
-                                <b><span class="cross" style="color: red;">❌</span></b>
-                            </td>
-                            <td>
-                                <b><span class="tick">✔️</span></b>
-                                <button class="button" onclick="download('experiment2_questionnaires')">
-                                    <b><span class="material-symbols-outlined icon">download</span></b>
-                                </button>
-                            </td>
-                        </tr>
+                    <table id="experiment1Table" style="margin-left: 0px;">
+                        <thead>
+                            <tr>
+                                <th>Conditions</th>
+                                <th>Attentive<br>Distracted</th>
+                            </tr>
+                        </thead>
+                    
+                        <tbody>
+                            {% for condition, icon, file_prefix, exclude_experiments in [
+                                ('All Modalities', 'backup_table', 'all', []),
+                                ('Pupil size', 'visibility', 'pupil', []),
+                                ('Gaze position', 'eye_tracking', 'gaze_visualangle', []),
+                                ('Saccades', 'visibility_lock', 'saccades', []),
+                                ('Saccade Rate', 'visibility_lock', 'saccaderate', []),
+                                ('Blinks', 'visibility_off', 'blinks', []),
+                                ('Blink Rate', 'visibility_off', 'blinkrate', []),
+                                ('Fixations', 'preview', 'fixations', []),
+                                ('Fixation Rate', 'preview', 'fixationrate', []),
+                                ('Head Movement', 'face_shake', 'head', []),
+                                ('EEG', 'neurology', 'eeg', [1]),
+                                ('ECG', 'ecg', 'ecg', [1]),
+                                ('Heart Beats', 'favorite', 'rpeaks', [1]),
+                                ('Heart Rate', 'cardiology', 'heartrate', [1]),
+                                ('EOG', 'ophthalmology', 'eog', [1]),
+                                ('Respiration', 'respiratory_rate', 'respiration', [1,2,3]),
+                                ('Breaths', 'pulmonology', 'breathpeaks', [1,2,3]),
+                                ('Breath Rate', 'monitor_heart', 'breathrate', [1,2,3])
+                            ] %}
+                            <tr data-id="{{ loop.index }}">
+                                <td class="table-clickable">
+                                    <b><span class="material-symbols-outlined md-36">{{ icon }}</span><br>{{ condition }}</b>
+                                </td>
+                                <td>
+                                    {% if 5 in exclude_experiments %}
+                                    <span class="cross" style="color: red;">❌</span>
+                                    {% else %}
+                                    <button class="button download-btn" data-filename="processed/experiment5/processed_experiment5_{{ file_prefix }}.mat" aria-label="Download processed {{ condition }} data for Experiment 1">
+                                        <b><span class="material-symbols-outlined icon">download</span></b>
+                                    </button>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
                     </table>
+                    
             </div>
         </section>
 
