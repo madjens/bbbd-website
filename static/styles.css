@@ -837,24 +837,22 @@ pre {
     margin-bottom: 15px;
 }
 
-
-.download-btn-nb {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: rgba(128, 128, 128, 0.7); /* Grey translucent background */
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Optional shadow for better visibility */
+.portfolio-link {
+    color: #5fa8d3; /* Light blue color */
+    text-decoration: none; /* Remove underline */
+}
+.portfolio-link:hover,
+.portfolio-link:focus {
+    color: #5fa8d3; /* Maintain the same light blue color */
+    outline: none; /* Remove focus outline if desired */
+}
+.portfolio-link:visited {
+    color: #5fa8d3; /* Keep the color same after the link is visited */
+}
+.portfolio-link:active {
+    color: #5fa8d3; /* Keep the color the same when the link is clicked */
 }
 
-.download-btn-nb:hover {
-    background-color: rgba(128, 128, 128, 1); /* Darken the button when hovered */
-}
 
 #exp-heading h2 {
     margin: 0;
