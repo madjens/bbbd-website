@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
     <script src="{{ url_for('static', filename='experiments_script.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='download_script.js') }}" defer></script> <!-- Link to script.js -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 
@@ -137,54 +138,6 @@
                        <br><br>In between each stimulus presentation a drift check was performed and tracking was recalibrated if the visual angular error was greater than 2°.
                        Blinks were detected using the SR research blink detection algorithm and remaining peaks were found using a peak picking algorithm. The blink and 100 ms before and after were filled with linearly interpolated values.
                     </p>
-
-                    <h2 style="margin-left: 0px;"><u>Modality Matrix</u></h2>
-                    <table id="experiment1Table" style="margin-left: 0px;">
-                        <thead>
-                            <tr>
-                                <th>Conditions</th>
-                                <th>Attentive<br>Distracted</th>
-                            </tr>
-                        </thead>
-                    
-                        <tbody>
-                            {% for condition, icon, file_prefix, exclude_experiments in [
-                                ('All Modalities', 'backup_table', 'all', []),
-                                ('Pupil size', 'visibility', 'pupil', []),
-                                ('Gaze position', 'eye_tracking', 'gaze_visualangle', []),
-                                ('Saccades', 'visibility_lock', 'saccades', []),
-                                ('Saccade Rate', 'visibility_lock', 'saccaderate', []),
-                                ('Blinks', 'visibility_off', 'blinks', []),
-                                ('Blink Rate', 'visibility_off', 'blinkrate', []),
-                                ('Fixations', 'preview', 'fixations', []),
-                                ('Fixation Rate', 'preview', 'fixationrate', []),
-                                ('Head Movement', 'face_shake', 'head', []),
-                                ('EEG', 'neurology', 'eeg', [1]),
-                                ('ECG', 'ecg', 'ecg', [1]),
-                                ('Heart Beats', 'favorite', 'rpeaks', [1]),
-                                ('Heart Rate', 'cardiology', 'heartrate', [1]),
-                                ('EOG', 'ophthalmology', 'eog', [1]),
-                                ('Respiration', 'respiratory_rate', 'respiration', [1,2,3]),
-                                ('Breaths', 'pulmonology', 'breathpeaks', [1,2,3]),
-                                ('Breath Rate', 'monitor_heart', 'breathrate', [1,2,3])
-                            ] %}
-                            <tr data-id="{{ loop.index }}">
-                                <td class="table-clickable">
-                                    <b><span class="material-symbols-outlined md-36">{{ icon }}</span><br>{{ condition }}</b>
-                                </td>
-                                <td>
-                                    {% if 1 in exclude_experiments %}
-                                    <span class="cross" style="color: red;">❌</span>
-                                    {% else %}
-                                    <button class="button download-btn" data-filename="processed/experiment1/processed_experiment1_{{ file_prefix }}.mat" aria-label="Download processed {{ condition }} data for Experiment 1">
-                                        <b><span class="material-symbols-outlined icon">download</span></b>
-                                    </button>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>                    
                     </section>
             </div>
 
@@ -235,55 +188,6 @@
                         stimulus without requiring overt responses and is based on the serial subtraction task used to assess mental capacity and has previously been used to assess attention.
 
                     </p>
-
-                    <h2 style="margin-left: 0px;"><u>Download Raw Data</u></h2>
-                    <table id="experiment1Table" style="margin-left: 0px;">
-                        <thead>
-                            <tr>
-                                <th>Conditions</th>
-                                <th>Attentive<br>Distracted</th>
-                            </tr>
-                        </thead>
-                    
-                        <tbody>
-                            {% for condition, icon, file_prefix, exclude_experiments in [
-                                ('All Modalities', 'backup_table', 'all', []),
-                                ('Pupil size', 'visibility', 'pupil', []),
-                                ('Gaze position', 'eye_tracking', 'gaze_visualangle', []),
-                                ('Saccades', 'visibility_lock', 'saccades', []),
-                                ('Saccade Rate', 'visibility_lock', 'saccaderate', []),
-                                ('Blinks', 'visibility_off', 'blinks', []),
-                                ('Blink Rate', 'visibility_off', 'blinkrate', []),
-                                ('Fixations', 'preview', 'fixations', []),
-                                ('Fixation Rate', 'preview', 'fixationrate', []),
-                                ('Head Movement', 'face_shake', 'head', []),
-                                ('EEG', 'neurology', 'eeg', [1]),
-                                ('ECG', 'ecg', 'ecg', [1]),
-                                ('Heart Beats', 'favorite', 'rpeaks', [1]),
-                                ('Heart Rate', 'cardiology', 'heartrate', [1]),
-                                ('EOG', 'ophthalmology', 'eog', [1]),
-                                ('Respiration', 'respiratory_rate', 'respiration', [1,2,3]),
-                                ('Breaths', 'pulmonology', 'breathpeaks', [1,2,3]),
-                                ('Breath Rate', 'monitor_heart', 'breathrate', [1,2,3])
-                            ] %}
-                            <tr data-id="{{ loop.index }}">
-                                <td class="table-clickable">
-                                    <b><span class="material-symbols-outlined md-36">{{ icon }}</span><br>{{ condition }}</b>
-                                </td>
-                                <td>
-                                    {% if 2 in exclude_experiments %}
-                                    <span class="cross" style="color: red;">❌</span>
-                                    {% else %}
-                                    <button class="button download-btn" data-filename="processed/experiment2/processed_experiment2_{{ file_prefix }}.mat" aria-label="Download processed {{ condition }} data for Experiment 1">
-                                        <b><span class="material-symbols-outlined icon">download</span></b>
-                                    </button>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                    
                 </section>
             </div>
 
@@ -336,55 +240,6 @@
                         stimulus without requiring overt responses and is based on the serial subtraction task used to assess mental capacity and has previously been used to assess attention.
 
                     </p>
-
-                    <h2 style="margin-left: 0px;"><u>Download Raw Data</u></h2>
-                    <table id="experiment1Table" style="margin-left: 0px;">
-                        <thead>
-                            <tr>
-                                <th>Conditions</th>
-                                <th>Attentive<br>Distracted</th>
-                            </tr>
-                        </thead>
-                    
-                        <tbody>
-                            {% for condition, icon, file_prefix, exclude_experiments in [
-                                ('All Modalities', 'backup_table', 'all', []),
-                                ('Pupil size', 'visibility', 'pupil', []),
-                                ('Gaze position', 'eye_tracking', 'gaze_visualangle', []),
-                                ('Saccades', 'visibility_lock', 'saccades', []),
-                                ('Saccade Rate', 'visibility_lock', 'saccaderate', []),
-                                ('Blinks', 'visibility_off', 'blinks', []),
-                                ('Blink Rate', 'visibility_off', 'blinkrate', []),
-                                ('Fixations', 'preview', 'fixations', []),
-                                ('Fixation Rate', 'preview', 'fixationrate', []),
-                                ('Head Movement', 'face_shake', 'head', []),
-                                ('EEG', 'neurology', 'eeg', [1]),
-                                ('ECG', 'ecg', 'ecg', [1]),
-                                ('Heart Beats', 'favorite', 'rpeaks', [1]),
-                                ('Heart Rate', 'cardiology', 'heartrate', [1]),
-                                ('EOG', 'ophthalmology', 'eog', [1]),
-                                ('Respiration', 'respiratory_rate', 'respiration', [1,2,3]),
-                                ('Breaths', 'pulmonology', 'breathpeaks', [1,2,3]),
-                                ('Breath Rate', 'monitor_heart', 'breathrate', [1,2,3])
-                            ] %}
-                            <tr data-id="{{ loop.index }}">
-                                <td class="table-clickable">
-                                    <b><span class="material-symbols-outlined md-36">{{ icon }}</span><br>{{ condition }}</b>
-                                </td>
-                                <td>
-                                    {% if 3 in exclude_experiments %}
-                                    <span class="cross" style="color: red;">❌</span>
-                                    {% else %}
-                                    <button class="button download-btn" data-filename="processed/experiment3/processed_experiment3_{{ file_prefix }}.mat" aria-label="Download processed {{ condition }} data for Experiment 1">
-                                        <b><span class="material-symbols-outlined icon">download</span></b>
-                                    </button>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                    
                 </section>
 
             </div>
@@ -435,56 +290,6 @@
                         is not a physiological artifact. This issue arose during the experimental setup due to feedback from
                         the Galvanic Skin Response sensor feedback.
                     </p>
-
-                    <h2 style="margin-left: 0px;"><u>Download Raw Data</u></h2>
-                    <table id="experiment1Table" style="margin-left: 0px;">
-                        <thead>
-                            <tr>
-                                <th>Conditions</th>
-                                <th>Attentive<br>Distracted</th>
-                            </tr>
-                        </thead>
-                    
-                        <tbody>
-                            {% for condition, icon, file_prefix, exclude_experiments in [
-                                ('All Modalities', 'backup_table', 'all', []),
-                                ('Pupil size', 'visibility', 'pupil', []),
-                                ('Gaze position', 'eye_tracking', 'gaze_visualangle', []),
-                                ('Saccades', 'visibility_lock', 'saccades', []),
-                                ('Saccade Rate', 'visibility_lock', 'saccaderate', []),
-                                ('Blinks', 'visibility_off', 'blinks', []),
-                                ('Blink Rate', 'visibility_off', 'blinkrate', []),
-                                ('Fixations', 'preview', 'fixations', []),
-                                ('Fixation Rate', 'preview', 'fixationrate', []),
-                                ('Head Movement', 'face_shake', 'head', []),
-                                ('EEG', 'neurology', 'eeg', [1]),
-                                ('ECG', 'ecg', 'ecg', [1]),
-                                ('Heart Beats', 'favorite', 'rpeaks', [1]),
-                                ('Heart Rate', 'cardiology', 'heartrate', [1]),
-                                ('EOG', 'ophthalmology', 'eog', [1]),
-                                ('Respiration', 'respiratory_rate', 'respiration', [1,2,3]),
-                                ('Breaths', 'pulmonology', 'breathpeaks', [1,2,3]),
-                                ('Breath Rate', 'monitor_heart', 'breathrate', [1,2,3])
-                            ] %}
-                            <tr data-id="{{ loop.index }}">
-                                <td class="table-clickable">
-                                    <b><span class="material-symbols-outlined md-36">{{ icon }}</span><br>{{ condition }}</b>
-                                </td>
-                                <td>
-                                    {% if 4 in exclude_experiments %}
-                                    <span class="cross" style="color: red;">❌</span>
-                                    {% else %}
-                                    <button class="button download-btn" data-filename="processed/experiment4/processed_experiment4_{{ file_prefix }}.mat" aria-label="Download processed {{ condition }} data for Experiment 1">
-                                        <b><span class="material-symbols-outlined icon">download</span></b>
-                                    </button>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                    
-
             </div>
             <div id="exp5" class="experiment-content" style="display:none;">
                 <section id="exp-heading">
@@ -531,55 +336,6 @@
                         physiological artifact. This issue arose during the experimental setup due to feedback from the Galvanic Skin
                         Response sensor feedback.
                     </p>
-
-                    <h2 style="margin-left: 0px;"><u>Download Raw Data</u></h2>
-                    <table id="experiment1Table" style="margin-left: 0px;">
-                        <thead>
-                            <tr>
-                                <th>Conditions</th>
-                                <th>Attentive<br>Distracted</th>
-                            </tr>
-                        </thead>
-                    
-                        <tbody>
-                            {% for condition, icon, file_prefix, exclude_experiments in [
-                                ('All Modalities', 'backup_table', 'all', []),
-                                ('Pupil size', 'visibility', 'pupil', []),
-                                ('Gaze position', 'eye_tracking', 'gaze_visualangle', []),
-                                ('Saccades', 'visibility_lock', 'saccades', []),
-                                ('Saccade Rate', 'visibility_lock', 'saccaderate', []),
-                                ('Blinks', 'visibility_off', 'blinks', []),
-                                ('Blink Rate', 'visibility_off', 'blinkrate', []),
-                                ('Fixations', 'preview', 'fixations', []),
-                                ('Fixation Rate', 'preview', 'fixationrate', []),
-                                ('Head Movement', 'face_shake', 'head', []),
-                                ('EEG', 'neurology', 'eeg', [1]),
-                                ('ECG', 'ecg', 'ecg', [1]),
-                                ('Heart Beats', 'favorite', 'rpeaks', [1]),
-                                ('Heart Rate', 'cardiology', 'heartrate', [1]),
-                                ('EOG', 'ophthalmology', 'eog', [1]),
-                                ('Respiration', 'respiratory_rate', 'respiration', [1,2,3]),
-                                ('Breaths', 'pulmonology', 'breathpeaks', [1,2,3]),
-                                ('Breath Rate', 'monitor_heart', 'breathrate', [1,2,3])
-                            ] %}
-                            <tr data-id="{{ loop.index }}">
-                                <td class="table-clickable">
-                                    <b><span class="material-symbols-outlined md-36">{{ icon }}</span><br>{{ condition }}</b>
-                                </td>
-                                <td>
-                                    {% if 5 in exclude_experiments %}
-                                    <span class="cross" style="color: red;">❌</span>
-                                    {% else %}
-                                    <button class="button download-btn" data-filename="processed/experiment5/processed_experiment5_{{ file_prefix }}.mat" aria-label="Download processed {{ condition }} data for Experiment 1">
-                                        <b><span class="material-symbols-outlined icon">download</span></b>
-                                    </button>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                    
             </div>
         </section>
 
