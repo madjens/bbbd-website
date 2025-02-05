@@ -165,11 +165,11 @@ def download_file():
             full_key = base_path + '/' + filename
         
         elif 'demographics' in filename.lower():
-            filename = f'{exp}_demographics.tsv'
+            filename = f'raw/{exp}/{exp}_demographics.zip'
             full_key = base_path + '/' + filename
 
         elif 'questionnaires' in filename.lower():
-            filename = f'{exp}_questionnaires.zip'
+            filename = f'raw/{exp}/{exp}_questionnaires.zip'
             full_key = base_path + '/' + filename
             
         else:
