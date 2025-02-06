@@ -98,54 +98,54 @@ def download_zip(exp_name):
     bucket_name = "fcp-indi"
     s3 = boto3.client('s3', config=Config(signature_version=UNSIGNED))
 
-    if exp_name == 'bbbd':  # Return links to all zip files
-        prefix = prefix_s3 + '/bids_data/'
-        response = s3.list_objects_v2(Bucket=bucket_name, Prefix=prefix)
+    # if exp_name == 'bbbd':  # Return links to all zip files
+    #     prefix = prefix_s3 + '/bids_data/'
+    #     response = s3.list_objects_v2(Bucket=bucket_name, Prefix=prefix)
 
-        if 'Contents' not in response:
-            return jsonify({'error': 'No zip files found in the BBBD directory'}), 404
+    #     if 'Contents' not in response:
+    #         return jsonify({'error': 'No zip files found in the BBBD directory'}), 404
 
-        files_to_zip = [obj['Key'] for obj in response['Contents']]
+    #     files_to_zip = [obj['Key'] for obj in response['Contents']]
 
-        if not files_to_zip:
-            return jsonify({'error': 'No files found to zip'}), 404
+    #     if not files_to_zip:
+    #         return jsonify({'error': 'No files found to zip'}), 404
 
-        # Create an in-memory zip file
-        memory_file = io.BytesIO()
+    #     # Create an in-memory zip file
+    #     memory_file = io.BytesIO()
 
-        with zipfile.ZipFile(memory_file, 'w', zipfile.ZIP_DEFLATED) as zipf:
-            for file_key in files_to_zip:
-                # Stream the file from S3 and add it to the zip file in memory
-                s3_object = s3.get_object(Bucket=bucket_name, Key=file_key)
-                file_name = file_key.split('/')[-1]  # Use the file name without the path
+    #     with zipfile.ZipFile(memory_file, 'w', zipfile.ZIP_DEFLATED) as zipf:
+    #         for file_key in files_to_zip:
+    #             # Stream the file from S3 and add it to the zip file in memory
+    #             s3_object = s3.get_object(Bucket=bucket_name, Key=file_key)
+    #             file_name = file_key.split('/')[-1]  # Use the file name without the path
 
-                # Write to the zip file in memory
-                zipf.writestr(file_name, s3_object['Body'].read())
+    #             # Write to the zip file in memory
+    #             zipf.writestr(file_name, s3_object['Body'].read())
 
-        memory_file.seek(0)  # Reset the file pointer to the beginning
+    #     memory_file.seek(0)  # Reset the file pointer to the beginning
 
-        # Create a response to stream the zip file
-        return Response(
-            memory_file,
-            mimetype='application/zip',
-            headers={
-                'Content-Disposition': 'attachment; filename=bbbd.zip'
-            }
+    #     # Create a response to stream the zip file
+    #     return Response(
+    #         memory_file,
+    #         mimetype='application/zip',
+    #         headers={
+    #             'Content-Disposition': 'attachment; filename=bbbd.zip'
+    #         }
+    #     )
+
+    # else:  # Download a specific zip file
+    prefix = prefix_s3 + '/bids_data/' + f"{exp_name}"
+    try:
+        # Generate a pre-signed URL for the specific file
+        download_url = s3.generate_presigned_url(
+            'get_object',
+            Params={'Bucket': bucket_name, 'Key': prefix},
+            ExpiresIn=3600  # Link valid for 1 hour
         )
+        return redirect(download_url)
 
-    else:  # Download a specific zip file
-        prefix = prefix_s3 + '/bids_data/' + f"{exp_name}"
-        try:
-            # Generate a pre-signed URL for the specific file
-            download_url = s3.generate_presigned_url(
-                'get_object',
-                Params={'Bucket': bucket_name, 'Key': prefix},
-                ExpiresIn=3600  # Link valid for 1 hour
-            )
-            return redirect(download_url)
-
-        except s3.exceptions.NoSuchKey:
-            return jsonify({'error': f'Zip file for {exp_name} not found'}), 404
+    except s3.exceptions.NoSuchKey:
+        return jsonify({'error': f'Zip file for {exp_name} not found'}), 404
 
 @app.route('/download_modality')
 def download_file():
