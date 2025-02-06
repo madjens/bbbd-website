@@ -67,7 +67,7 @@ datasets = [
     {
         'id': 6,
         'name': 'All Experiments',
-        'bidsname': 'all_experiments',
+        'bidsname': 'all_experiments.zip',
         'description': 'Datasets of all 5 recorded experiments',
         'subjects': 178,
         'sessions': 2,
