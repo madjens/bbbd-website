@@ -1,16 +1,16 @@
 datasets = [
     {
         'id': 1,
-        'name': 'Experiment 1',
-        'bidsname': 'experiment1.zip',
-        'description': 'Subjects watched five videos, knowing they\'d be tested afterward. After each video, they answered 11 to 12 factual multiple-choice questions. Videos and questions were presented in random order.',
-        'subjects': 27,
+        'name': 'All Experiments',
+        'bidsname': 'all_experiments.zip',
+        'description': 'Datasets of all 5 recorded experiments',
+        'subjects': 178,
         'sessions': 2,
-        'filename': 'sample1.txt',
-        'Stimuli': 5,
-        'page': 'experiments-page',
-        'Modalities': '<ul> <li> Gaze (X, Y) </li> <li> Pupil Size </li> <li> Blinks </li> <li> Saccades </li> </ul>',
-        'Conditions' : '1) Attentive - Watch videos with focus <br> 2) Distracted - Watch videos while counting backwards in your head'
+        'Stimuli': '22 in total',
+        'page': '',
+        'filename': 'MEVD.zip',
+        'Modalities': '<ul><li>Gaze (X, Y)</li><li>Head (X, Y, Z)</li><li>Pupil Size</li><li>ECG</li><li>EEG (64 Channel)</li><li>Heart Rate (Derivative)</li><li>Blinks (Derivative)</li><li>Saccades (Derivative)</li></ul>',
+        'Conditions' : 'Attend/Distract (Exp 1,2,3), Attend/Attend (Exp 4,5)'
     },
     {
         'id': 2,
@@ -66,15 +66,16 @@ datasets = [
     },
     {
         'id': 6,
-        'name': 'All Experiments',
-        'bidsname': 'all_experiments.zip',
-        'description': 'Datasets of all 5 recorded experiments',
-        'subjects': 178,
+        'name': 'Experiment 1',
+        'bidsname': 'experiment1.zip',
+        'description': 'Subjects watched five videos, knowing they\'d be tested afterward. After each video, they answered 11 to 12 factual multiple-choice questions. Videos and questions were presented in random order.',
+        'subjects': 27,
         'sessions': 2,
-        'Stimuli': '22 in total',
-        'page': '',
-        'filename': 'MEVD.zip',
-        'Modalities': '<ul><li>Gaze (X, Y)</li><li>Head (X, Y, Z)</li><li>Pupil Size</li><li>ECG</li><li>EEG (64 Channel)</li><li>Heart Rate (Derivative)</li><li>Blinks (Derivative)</li><li>Saccades (Derivative)</li></ul>',
-        'Conditions' : 'Attend/Distract (Exp 1,2,3), Attend/Attend (Exp 4,5)'
+        'filename': 'sample1.txt',
+        'Stimuli': 5,
+        'page': 'experiments-page',
+        'Modalities': '<ul> <li> Gaze (X, Y) </li> <li> Pupil Size </li> <li> Blinks </li> <li> Saccades </li> </ul>',
+        'Conditions' : '1) Attentive - Watch videos with focus <br> 2) Distracted - Watch videos while counting backwards in your head'
     }
+    
 ]
