@@ -132,24 +132,49 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     
+    // function displayDownloadCounts(counts) {
+    //     let table = `<table border="1">
+    //                     <tr>
+    //                         <th>Filename</th>
+    //                         <th>Downloads</th>
+    //                     </tr>`;
+        
+    //     for (let filename in counts) {
+    //         table += `<tr>
+    //                     <td>${filename}</td>
+    //                     <td>${counts[filename]}</td>
+    //                   </tr>`;
+    //     }
+    
+    //     table += `</table>`;
+    
+    //     document.getElementById("countTable").innerHTML = table;
+    // }
     function displayDownloadCounts(counts) {
         let table = `<table border="1">
                         <tr>
-                            <th>Filename</th>
-                            <th>Download Count</th>
-                        </tr>`;
+                            <th>Filenames</th>
+                        </tr>
+                        <tr>`;
         
         for (let filename in counts) {
-            table += `<tr>
-                        <td>${filename}</td>
-                        <td>${counts[filename]}</td>
-                      </tr>`;
+            table += `<td>${filename}</td>`;
         }
     
-        table += `</table>`;
-    
+        table += `</tr>
+                  <tr>
+                    <th>Downloads</th>
+                  </tr>
+                  <tr>`;
+        
+        for (let filename in counts) {
+            table += `<td>${counts[filename]}</td>`;
+        }
+        table += `</tr></table>`;
         document.getElementById("countTable").innerHTML = table;
     }
+    
+    
     
     // Fetch logs when the page loads
     window.onload = fetchAndCountDownloads;
