@@ -106,6 +106,55 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
+    async function fetchAndCountDownloads() {
+        try {
+            const response = await fetch('/get_download_logs');
+            const logs = await response.json();
+    
+            if (logs.error) {
+                console.error("Error fetching logs:", logs.error);
+                return;
+            }
+    
+            // Count occurrences of each filename
+            let downloadCounts = {};
+            logs.forEach(log => {
+                let filename = log.filename;
+                downloadCounts[filename] = (downloadCounts[filename] || 0) + 1;
+            });
+    
+            console.log("Download Counts:", downloadCounts);
+    
+            // Display the counts in a table
+            displayDownloadCounts(downloadCounts);
+        } catch (error) {
+            console.error("Failed to fetch logs:", error);
+        }
+    }
+    
+    function displayDownloadCounts(counts) {
+        let table = `<table border="1">
+                        <tr>
+                            <th>Filename</th>
+                            <th>Download Count</th>
+                        </tr>`;
+        
+        for (let filename in counts) {
+            table += `<tr>
+                        <td>${filename}</td>
+                        <td>${counts[filename]}</td>
+                      </tr>`;
+        }
+    
+        table += `</table>`;
+    
+        document.getElementById("countTable").innerHTML = table;
+    }
+    
+    // Fetch logs when the page loads
+    window.onload = fetchAndCountDownloads;
+    
+
     function fetchTableHTML() {
         fetch('/table')  // Fetch the HTML file from the Flask route
             .then(response => {

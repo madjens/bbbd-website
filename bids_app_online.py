@@ -170,6 +170,25 @@ def download_file():
         print(f"Error: {e}, {full_key}")
         return "Internal Server Error", 500
 
+@app.route('/get_download_logs', methods=['GET'])
+def get_download_logs():
+    log_file_path = "./bbbd-website/logs/bids_datasets_download.log"
+    try:
+        with open(log_file_path, 'r') as file:
+            log_lines = file.readlines()
+
+        logs = []
+        for line in log_lines:
+            parts = line.strip().split(" - ")
+            if len(parts) >= 3:
+                timestamp, filename, url = parts
+                logs.append({"timestamp": timestamp, "filename": filename, "url": url})
+
+        return jsonify(logs)
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 ##############################
 #### Signal Visualisation ####
 ##############################
