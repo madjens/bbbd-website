@@ -1,6 +1,7 @@
 # app
 from flask import Flask, jsonify, abort, render_template, request, abort, Response, redirect, url_for, send_file
-# import os
+import logging
+from datetime import datetime
 import pandas as pd
 from io import BytesIO
 import io
@@ -9,7 +10,6 @@ import requests
 import boto3
 from botocore import UNSIGNED
 from botocore.client import Config
-import zipfile
 import git
 
 # from threading import Thread
@@ -22,6 +22,16 @@ app.config.from_object(ConfigVariables)
 
 bucket_name = app.config['S3_BUCKET']
 prefix_s3 = app.config['S3_PREFIX']
+
+bids_log_file = "logs" + "/bids_datasets_download.log"
+individual_log_file = "logs" + "/individual_files_download.log"
+logging.basicConfig(level=logging.INFO)
+bids_logger = logging.getLogger("bids_download")
+indiv_logger = logging.getLogger("individual_download")
+bids_handler = logging.FileHandler(bids_log_file)
+indiv_handler = logging.FileHandler(individual_log_file)
+bids_logger.addHandler(bids_handler)
+indiv_logger.addHandler(indiv_handler)
 
 @app.route('/git_update', methods=['POST'])
 def git_update():
@@ -97,43 +107,6 @@ def get_dataset_info(dataset_id):
 def download_zip(exp_name):
     bucket_name = "fcp-indi"
     s3 = boto3.client('s3', config=Config(signature_version=UNSIGNED))
-
-    # if exp_name == 'bbbd':  # Return links to all zip files
-    #     prefix = prefix_s3 + '/bids_data/'
-    #     response = s3.list_objects_v2(Bucket=bucket_name, Prefix=prefix)
-
-    #     if 'Contents' not in response:
-    #         return jsonify({'error': 'No zip files found in the BBBD directory'}), 404
-
-    #     files_to_zip = [obj['Key'] for obj in response['Contents']]
-
-    #     if not files_to_zip:
-    #         return jsonify({'error': 'No files found to zip'}), 404
-
-    #     # Create an in-memory zip file
-    #     memory_file = io.BytesIO()
-
-    #     with zipfile.ZipFile(memory_file, 'w', zipfile.ZIP_DEFLATED) as zipf:
-    #         for file_key in files_to_zip:
-    #             # Stream the file from S3 and add it to the zip file in memory
-    #             s3_object = s3.get_object(Bucket=bucket_name, Key=file_key)
-    #             file_name = file_key.split('/')[-1]  # Use the file name without the path
-
-    #             # Write to the zip file in memory
-    #             zipf.writestr(file_name, s3_object['Body'].read())
-
-    #     memory_file.seek(0)  # Reset the file pointer to the beginning
-
-    #     # Create a response to stream the zip file
-    #     return Response(
-    #         memory_file,
-    #         mimetype='application/zip',
-    #         headers={
-    #             'Content-Disposition': 'attachment; filename=bbbd.zip'
-    #         }
-    #     )
-
-    # else:  # Download a specific zip file
     prefix = prefix_s3 + '/bids_data/' + f"{exp_name}"
     try:
         # Generate a pre-signed URL for the specific file
@@ -142,6 +115,8 @@ def download_zip(exp_name):
             Params={'Bucket': bucket_name, 'Key': prefix},
             ExpiresIn=3600  # Link valid for 1 hour
         )
+        # Log the download
+        bids_logger.info(f"{datetime.now()} - {exp_name} - {download_url}")
         return redirect(download_url)
 
     except s3.exceptions.NoSuchKey:
@@ -182,6 +157,8 @@ def download_file():
             ExpiresIn=3600  # Link valid for 1 hour
         )
         print(download_url)
+        # Log the download
+        indiv_logger.info(f"{datetime.now()} - {filename} - {download_url}")
         return jsonify({'download_url': download_url})
 
     except Exception as e:
