@@ -28,14 +28,6 @@ print("BIDS LOG FILE", bids_log_file)
 individual_log_file = "/home/bbbd/bbbd-website/logs" + "/individual_files_download.log"
 print("INDIVIDUAL LOG FILE", individual_log_file)
 
-logging.basicConfig(level=logging.INFO)
-bids_logger = logging.getLogger("bids_download")
-indiv_logger = logging.getLogger("individual_download")
-bids_handler = logging.FileHandler(bids_log_file)
-indiv_handler = logging.FileHandler(individual_log_file)
-bids_logger.addHandler(bids_handler)
-indiv_logger.addHandler(indiv_handler)
-
 @app.route('/git_update', methods=['POST'])
 def git_update():
     repo = git.Repo('./bbbd-website')
@@ -44,6 +36,14 @@ def git_update():
                      origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
     origin.pull()
     return '', 200
+
+logging.basicConfig(level=logging.INFO)
+bids_logger = logging.getLogger("bids_download")
+indiv_logger = logging.getLogger("individual_download")
+bids_handler = logging.FileHandler(bids_log_file)
+indiv_handler = logging.FileHandler(individual_log_file)
+bids_logger.addHandler(bids_handler)
+indiv_logger.addHandler(indiv_handler)
 
 @app.route('/')
 def index():
