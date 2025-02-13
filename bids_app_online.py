@@ -40,6 +40,8 @@ def git_update():
 logging.basicConfig(level=logging.INFO)
 bids_logger = logging.getLogger("bids_download")
 indiv_logger = logging.getLogger("individual_download")
+open(bids_log_file, 'a').close()
+open(individual_log_file, 'a').close()
 bids_handler = logging.FileHandler(bids_log_file)
 indiv_handler = logging.FileHandler(individual_log_file)
 bids_logger.addHandler(bids_handler)
