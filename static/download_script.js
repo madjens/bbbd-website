@@ -133,15 +133,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     function displayBIDSDownloadCounts(counts) {
-        let table = `<table border="1" style="border-collapse: collapse; border: 2px solid #eee4e4ec;">`;
+        let table = `<table border="1" style="border-collapse: collapse; border: 1px solid #eee4e4ec;">`;
         table += `<tr style="background-color: #3f51b5; font-weight: bold;">`;
         for (let filename in counts) {
-            table += `<td style="border: 2px solid #eee4e4ec; padding: 8px;">${filename}</td>`;
+            table += `<td style="border: 1px solid #eee4e4ec; padding: 8px;">${filename}</td>`;
         }
         table += `</tr>
                   <tr style="background-color: #3f51b5; font-weight: bold;">`;
         for (let filename in counts) {
-            table += `<td style="border: 2px solid #eee4e4ec; padding: 8px;">${counts[filename]}</td>`;
+            table += `<td style="border: 1px solid #eee4e4ec; padding: 8px;">${counts[filename]}</td>`;
         }
         table += `</tr></table>`;
         document.getElementById("countTable").innerHTML = table;
