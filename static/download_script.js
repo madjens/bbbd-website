@@ -163,12 +163,12 @@ document.addEventListener("DOMContentLoaded", () => {
         let countTable = `
             <table border="1" style="border-collapse: collapse; border: 1px solid #eee4e4ec; margin-top: 4px;">
                 <tr style="background-color: #3f51b5; font-weight: bold;">
-                    <td>Total Raw Downloads</td>
-                    <td>Total Processed Downloads</td>
+                    <td>Raw</td>
+                    <td>Processed</td>
                 </tr>
                 <tr>
-                    <td style="border: 1px solid #eee4e4ec; padding: 8px;">${rawCount}</td>
-                    <td style="border: 1px solid #eee4e4ec; padding: 8px;">${processedCount}</td>
+                    <td style="border: 1px solid #eee4e4ec; background-color: #3f51b5; padding: 8px;">${rawCount}</td>
+                    <td style="border: 1px solid #eee4e4ec; background-color: #3f51b5; padding: 8px;">${processedCount}</td>
                 </tr>
             </table>
         `;
