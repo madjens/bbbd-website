@@ -151,22 +151,11 @@ document.addEventListener("DOMContentLoaded", () => {
     //     document.getElementById("countTable").innerHTML = table;
     // }
     function displayDownloadCounts(counts) {
-        let table = `<table border="1">
-                        <tr>
-                            <th>Filenames</th>
-                        </tr>
-                        <tr>`;
+        let table = `<table border="1">`;
         
         for (let filename in counts) {
             table += `<td>${filename}</td>`;
         }
-    
-        table += `</tr>
-                  <tr>
-                    <th>Downloads</th>
-                  </tr>
-                  <tr>`;
-        
         for (let filename in counts) {
             table += `<td>${counts[filename]}</td>`;
         }
