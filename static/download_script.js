@@ -133,24 +133,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     function displayDownloadCounts(counts) {
-        let table = `<table border="1">`;
-        
+        let table = `<table border="1" style="border-collapse: collapse; border: 3px solid black;">`;
+    
         // Create table rows with background color for filenames
-        table += `<tr style="background-color: #3f51b5;">`;
+        table += `<tr style="background-color: #3f51b5; font-weight: bold;">`;
         for (let filename in counts) {
-            table += `<td>${filename}</td>`;
+            table += `<td style="border: 3px solid black; padding: 5px;">${filename}</td>`;
         }
         table += `</tr>
-                  <tr style="background-color: #3f51b5;">`;
+                  <tr style="background-color: #3f51b5; font-weight: bold;">`;
     
         // Create table rows with background color for download counts
         for (let filename in counts) {
-            table += `<td>${counts[filename]}</td>`;
+            table += `<td style="border: 3px solid black; padding: 5px;">${counts[filename]}</td>`;
         }
-        
+    
         table += `</tr></table>`;
         document.getElementById("countTable").innerHTML = table;
     }
+    
     
     
     
