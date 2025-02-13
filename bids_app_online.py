@@ -189,6 +189,38 @@ def get_download_logs():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+@app.route('/get_individual_download_logs', methods=['GET'])
+def get_individual_download_logs():
+    log_file_path = "./bbbd-website/logs/individual_files_download.log"
+    try:
+        with open(log_file_path, 'r') as file:
+            log_lines = file.readlines()
+
+        logs = []
+        raw_count = 0
+        processed_count = 0
+
+        for line in log_lines:
+            parts = line.strip().split(" - ")
+            if len(parts) >= 3:
+                timestamp, filename, url = parts
+                logs.append({"timestamp": timestamp, "filename": filename, "url": url})
+                
+                # Count raw and processed files based on the filename
+                if "raw" in filename:
+                    raw_count += 1
+                elif "processed" in filename:
+                    processed_count += 1
+
+        return jsonify({
+            "logs": logs,
+            "rawCount": raw_count,
+            "processedCount": processed_count
+        })
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 ##############################
 #### Signal Visualisation ####
 ##############################

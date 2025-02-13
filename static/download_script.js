@@ -106,8 +106,17 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
+        
+
     async function fetchAndCountDownloads() {
         try {
+            const response_ind = await fetch('/get_individual_download_logs');
+            const data = await response_ind.json();
+            if (data.error) {
+                console.error("Error fetching logs:", data.error);
+                return;
+            }
+            
             const response = await fetch('/get_download_logs');
             const logs = await response.json();
     
@@ -122,16 +131,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 let filename = log.filename;
                 downloadCounts[filename] = (downloadCounts[filename] || 0) + 1;
             });
-    
-            console.log("Download Counts:", downloadCounts);
-    
             // Display the counts in a table
             displayBIDSDownloadCounts(downloadCounts);
+            
+            const rawCount = data.rawCount;
+            const processedCount = data.processedCount;
+            console.log("Raw Downloads:", rawCount);
+            console.log("Processed Downloads:", processedCount);
+            displayRawProcessedCounts(rawCount, processedCount);
+
         } catch (error) {
             console.error("Failed to fetch logs:", error);
         }
     }
-    
     function displayBIDSDownloadCounts(counts) {
         let table = `<table border="1" style="border-collapse: collapse; border: 1px solid #eee4e4ec; margin-top: 4px;">`;
         table += `<tr style="background-color: #3f51b5; font-weight: bold;">`;
@@ -146,10 +158,23 @@ document.addEventListener("DOMContentLoaded", () => {
         table += `</tr></table>`;
         document.getElementById("countTable").innerHTML = table;
     }
-    
-    
-    
-    
+
+    function displayRawProcessedCounts(rawCount, processedCount) {
+        let countTable = `
+            <table border="1" style="border-collapse: collapse; border: 1px solid #eee4e4ec; margin-top: 4px;">
+                <tr style="background-color: #3f51b5; font-weight: bold;">
+                    <td>Total Raw Downloads</td>
+                    <td>Total Processed Downloads</td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #eee4e4ec; padding: 8px;">${rawCount}</td>
+                    <td style="border: 1px solid #eee4e4ec; padding: 8px;">${processedCount}</td>
+                </tr>
+            </table>
+        `;
+        document.getElementById("rawProcessedCounts").innerHTML = countTable;
+    }
+
     // Fetch logs when the page loads
     window.onload = fetchAndCountDownloads;
     
