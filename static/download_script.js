@@ -135,16 +135,19 @@ document.addEventListener("DOMContentLoaded", () => {
     function displayDownloadCounts(counts) {
         let table = `<table border="1">`;
         
+        // Create table rows with background color for filenames
+        table += `<tr style="background-color: #3f51b5;">`;
         for (let filename in counts) {
             table += `<td>${filename}</td>`;
         }
-    
         table += `</tr>
-                  <tr>`;
-        
+                  <tr style="background-color: #3f51b5;">`;
+    
+        // Create table rows with background color for download counts
         for (let filename in counts) {
             table += `<td>${counts[filename]}</td>`;
         }
+        
         table += `</tr></table>`;
         document.getElementById("countTable").innerHTML = table;
     }
