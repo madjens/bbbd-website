@@ -156,6 +156,10 @@ document.addEventListener("DOMContentLoaded", () => {
         for (let filename in counts) {
             table += `<td>${filename}</td>`;
         }
+    
+        table += `</tr>
+                  <tr>`;
+        
         for (let filename in counts) {
             table += `<td>${counts[filename]}</td>`;
         }
