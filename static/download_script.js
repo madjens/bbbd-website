@@ -132,24 +132,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     
-    // function displayDownloadCounts(counts) {
-    //     let table = `<table border="1">
-    //                     <tr>
-    //                         <th>Filename</th>
-    //                         <th>Downloads</th>
-    //                     </tr>`;
-        
-    //     for (let filename in counts) {
-    //         table += `<tr>
-    //                     <td>${filename}</td>
-    //                     <td>${counts[filename]}</td>
-    //                   </tr>`;
-    //     }
-    
-    //     table += `</table>`;
-    
-    //     document.getElementById("countTable").innerHTML = table;
-    // }
     function displayDownloadCounts(counts) {
         let table = `<table border="1">`;
         
