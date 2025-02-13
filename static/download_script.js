@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function displayRawProcessedCounts(rawCount, processedCount) {
         let countTable = `
-            <table border="1" style="border-collapse: collapse; border: 1px solid #eee4e4ec; margin-top: 4px;">
+            <table border="1" style="border-collapse: collapse; border: 1px solid #eee4e4ec; margin-top: 10px;">
                 <tr style="background-color: #3f51b5; font-weight: bold;">
                     <td>Raw</td>
                     <td>Processed</td>
