@@ -126,28 +126,23 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log("Download Counts:", downloadCounts);
     
             // Display the counts in a table
-            displayDownloadCounts(downloadCounts);
+            displayBIDSDownloadCounts(downloadCounts);
         } catch (error) {
             console.error("Failed to fetch logs:", error);
         }
     }
     
-    function displayDownloadCounts(counts) {
-        let table = `<table border="1" style="border-collapse: collapse; border: 3px solid black;">`;
-    
-        // Create table rows with background color for filenames
+    function displayBIDSDownloadCounts(counts) {
+        let table = `<table border="1" style="border-collapse: collapse; border: 3px solid white;">`;
         table += `<tr style="background-color: #3f51b5; font-weight: bold;">`;
         for (let filename in counts) {
-            table += `<td style="border: 3px solid black; padding: 5px;">${filename}</td>`;
+            table += `<td style="border: 3px solid white; padding: 8px;">${filename}</td>`;
         }
         table += `</tr>
                   <tr style="background-color: #3f51b5; font-weight: bold;">`;
-    
-        // Create table rows with background color for download counts
         for (let filename in counts) {
-            table += `<td style="border: 3px solid black; padding: 5px;">${counts[filename]}</td>`;
+            table += `<td style="border: 3px solid white; padding: 8px;">${counts[filename]}</td>`;
         }
-    
         table += `</tr></table>`;
         document.getElementById("countTable").innerHTML = table;
     }
