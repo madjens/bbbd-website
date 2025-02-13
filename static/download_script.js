@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     function displayBIDSDownloadCounts(counts) {
-        let table = `<table border="1" style="border-collapse: collapse; border: 1px solid #eee4e4ec; margin-top: 2px;">`;
+        let table = `<table border="1" style="border-collapse: collapse; border: 1px solid #eee4e4ec; margin-top: 4px;">`;
         table += `<tr style="background-color: #3f51b5; font-weight: bold;">`;
         for (let filename in counts) {
             table += `<td style="border: 1px solid #eee4e4ec; padding: 8px;">${filename}</td>`;
