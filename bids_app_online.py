@@ -23,8 +23,8 @@ app.config.from_object(ConfigVariables)
 bucket_name = app.config['S3_BUCKET']
 prefix_s3 = app.config['S3_PREFIX']
 
-bids_log_file = "logs" + "/bids_datasets_download.log"
-individual_log_file = "logs" + "/individual_files_download.log"
+bids_log_file = "/home/bbbd/logs" + "/bids_datasets_download.log"
+individual_log_file = "/home/bbbd/logs" + "/individual_files_download.log"
 logging.basicConfig(level=logging.INFO)
 bids_logger = logging.getLogger("bids_download")
 indiv_logger = logging.getLogger("individual_download")
