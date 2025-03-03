@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
-    loadDatasetSignals(5);
+    loadDatasetSignals(6);
     function loadDatasetSignals(datasetId) {
         fetch(`/dataset/${datasetId}`)
             .then(response => response.json())
