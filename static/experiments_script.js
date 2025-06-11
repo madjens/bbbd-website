@@ -16,7 +16,7 @@ const stimuli = {
     },
     exp3: {
         // Define videos for experiment 3
-        1: 'https://www.youtube.com/embed/9w-5wJYVmcw', // What If We Killed All the Mosquitoes
+        1: 'https://www.youtube.com/embed/e0NT9i4Qnak', // What If We Killed All the Mosquitoes
         2: 'https://www.youtube.com/embed/mnYSMhR3jCI', // Are We All Related
         3: 'https://www.youtube.com/embed/30o4omX5qfo', // Work and the work-energy principle Physics Khan Academy
         4: 'https://www.youtube.com/embed/rkntp3_cZl4', // Dielectrics in capacitors Circuits Physics Khan Academy
@@ -26,7 +26,7 @@ const stimuli = {
     exp4: {
         // Define videos for experiment 4
         4: 'https://www.youtube.com/embed/oCEKMEeZXug', // Light Bulbs
-        5: 'https://www.youtube.com/embed/9w-5wJYVmcw', // Mosquitoes
+        5: 'https://www.youtube.com/embed/e0NT9i4Qnak', // Mosquitoes
         6: 'https://www.youtube.com/embed/lkRZKqDdwzU', // Three Factors That May Alter the Action of an Enzyme Chemistry Biology Concepts
         1: 'https://www.youtube.com/embed/VVAKFJ8VVp4', // Why are Stars Shaped
         2: 'https://www.youtube.com/embed/zQGOcOUBi6s', // The Immune System Explained – Bacteria Infection (3)
@@ -58,7 +58,7 @@ const expNames = {
     },
     exp3: {
         // Define videos for experiment 3
-        1: 'What If We Killed All the Mosquitoes',
+        1: 'What Would Happen if Mosquitoes Went Extinct?',
         2: 'Are We All Related',
         3: 'Work and the work-energy principle',
         4: 'Dielectrics in capacitors Circuits',
@@ -68,7 +68,7 @@ const expNames = {
     exp4: {
         // Define videos for experiment 4
         4: 'How Modern Light Bulbs Work',
-        5: 'What If We Killed All the Mosquitoes',
+        5: 'What Would Happen if Mosquitoes Went Extinct?',
         6: 'Three Factors That May Alter the Action of an Enzyme',
         1: 'Why are Stars Star-Shaped',
         2: 'The Immune System Explained – Bacteria Infection', //(3)

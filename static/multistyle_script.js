@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const stimuli = {
-        1: 'https://www.youtube.com/embed/9w-5wJYVmcw', // What If We Killed All the Mosquitoes
+        1: 'https://www.youtube.com/embed/e0NT9i4Qnak', // What If We Killed All the Mosquitoes
         2: 'https://www.youtube.com/embed/mnYSMhR3jCI', // Are We All Related
         3: 'https://www.youtube.com/embed/30o4omX5qfo', // Work and the work-energy principle Physics Khan Academy
         4: 'https://www.youtube.com/embed/rkntp3_cZl4', // Dielectrics in capacitors Circuits Physics Khan Academy
@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const videoNames = {
-        1: 'What If We Killed All the Mosquitoes',
+        1: 'What Would Happen if Mosquitoes Went Extinct?',
         2: 'Are We All Related',
         3: 'Work and the work-energy principle',
         4: 'Dielectrics in capacitors Circuits',
