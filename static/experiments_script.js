@@ -270,7 +270,7 @@ function getCsvFileName(expId, key) {
         'The Immune System Explained – Bacteria Infection': 'immune_quiz.tsv',
         'Who Invented the Internet - And Why': 'internet_quiz.tsv',
         'Why Do We Have More Boys Than Girls': 'boys_girls_quiz.tsv',
-        'What If We Killed All the Mosquitoes': 'mosquitoes_quiz.tsv',
+        'What Would Happen if Mosquitoes Went Extinct?': 'mosquitoes_quiz.tsv',
         'Are We All Related': 'related_quiz.tsv',
         'Work and the work-energy principle': 'work_energy_quiz.tsv',
         'Dielectrics in capacitors Circuits': 'capacitors_quiz.tsv',
