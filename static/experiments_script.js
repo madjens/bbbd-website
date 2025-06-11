@@ -302,7 +302,7 @@ function getCsvFileName(expId, key) {
 
 function fetchAndLoadCSV(fileName, csvIdsElement, tableElement, downloadElement) {
     if (!fileName) {
-        console.error("Invalid CSV file name");
+        console.error("Invalid CSV file name", fileName);
         return;
     }
 
